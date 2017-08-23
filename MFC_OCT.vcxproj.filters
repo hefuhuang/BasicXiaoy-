@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="源文件\资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="主对话框">
+      <UniqueIdentifier>{90d7a3ab-305f-4cf1-b8d8-6f32735fc159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="日志">
+      <UniqueIdentifier>{e9de7009-8c39-4bf7-b518-48f62d5f3e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vtk">
+      <UniqueIdentifier>{31de96d0-4391-45bb-af41-a67b3e8cf191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Opencv">
+      <UniqueIdentifier>{f250dd86-367d-4ccb-878b-1cc63169ebeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sys">
+      <UniqueIdentifier>{c69b6bbe-f1b0-4d2b-8431-79e1ee43ef23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="参数设置">
+      <UniqueIdentifier>{32de860c-3063-454a-a1d3-fb5b92d549d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OCT">
+      <UniqueIdentifier>{c2392459-c60c-4171-a98f-50645d132cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="线程">
+      <UniqueIdentifier>{e58c03c6-73fb-411a-9333-6d523827d729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vtk\头文件">
+      <UniqueIdentifier>{6a6d6ad1-1132-424b-8bb5-0055bbf12ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vtk\源文件">
+      <UniqueIdentifier>{64f6f3e5-37fb-4eb1-aa76-eae495a4c620}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MFC_OCT.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CvImgCtrl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFC_OCTDlg.h">
+      <Filter>主对话框</Filter>
+    </ClInclude>
+    <ClInclude Include="SysWriteOrRead.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSheet.h">
+      <Filter>参数设置</Filter>
+    </ClInclude>
+    <ClInclude Include="C2dParamSeting.h">
+      <Filter>参数设置</Filter>
+    </ClInclude>
+    <ClInclude Include="C3DParaSeting.h">
+      <Filter>参数设置</Filter>
+    </ClInclude>
+    <ClInclude Include="Dlg3DParam.h">
+      <Filter>参数设置</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgParam.h">
+      <Filter>参数设置</Filter>
+    </ClInclude>
+    <ClInclude Include="OpencvShowVedio.h">
+      <Filter>Opencv</Filter>
+    </ClInclude>
+    <ClInclude Include="SpectralRadar.h">
+      <Filter>OCT</Filter>
+    </ClInclude>
+    <ClInclude Include="UIthread.h">
+      <Filter>线程</Filter>
+    </ClInclude>
+    <ClInclude Include="RegenvtkColor.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vtkClientServerInterpreterInternals.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GUISupport\MFC\vtkGUISupportMFCModule.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LogReadOrWrite.h">
+      <Filter>日志</Filter>
+    </ClInclude>
+    <ClInclude Include="vtkClientServerStream.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SeconedInterface.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonPressInterractorStyle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GUISupport\MFC\MouseInteractorHighLight.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GUISupport\MFC\clientCallback.h">
+      <Filter>vtk\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vtkGUISupportMFCModule.h">
+      <Filter>vtk</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MFC_OCT.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFC_OCTDlg.cpp">
+      <Filter>主对话框</Filter>
+    </ClCompile>
+    <ClCompile Include="SysWriteOrRead.cpp">
+      <Filter>Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSheet.cpp">
+      <Filter>参数设置</Filter>
+    </ClCompile>
+    <ClCompile Include="C2dParamSeting.cpp">
+      <Filter>参数设置</Filter>
+    </ClCompile>
+    <ClCompile Include="C3DParaSeting.cpp">
+      <Filter>参数设置</Filter>
+    </ClCompile>
+    <ClCompile Include="Dlg3DParam.cpp">
+      <Filter>参数设置</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgParam.cpp">
+      <Filter>参数设置</Filter>
+    </ClCompile>
+    <ClCompile Include="OpencvShowVedio.cpp">
+      <Filter>Opencv</Filter>
+    </ClCompile>
+    <ClCompile Include="UIthread.cpp">
+      <Filter>线程</Filter>
+    </ClCompile>
+    <ClCompile Include="LogReadOrWrite.cpp">
+      <Filter>日志</Filter>
+    </ClCompile>
+    <ClCompile Include="RegenvtkColor.cpp">
+      <Filter>vtk\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SeconedInterface.cpp">
+      <Filter>vtk\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vtkClientServerInterpreterInternals.cpp">
+      <Filter>vtk\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vtkClientServerStream.cpp">
+      <Filter>vtk\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonPressInterractorStyle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GUISupport\MFC\clientCallback.cpp">
+      <Filter>vtk\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GUISupport\MFC\MouseInteractorHighLight.cpp">
+      <Filter>vtk\源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MFC_OCT.rc">
+      <Filter>源文件\资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MFC_OCT.rc2">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MFC_OCT.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="..\test\test.bmp">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="..\..\Project\MFC_OCT\test\test.bmp">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="..\test\TestTiff.bmp">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
