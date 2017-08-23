@@ -1,0 +1,10 @@
+*.xml 
+*.dll 
+*.lib 
+*.suo
+*.sdf 
+*.opensdf
+*.raw
+*.vtk 
+*.obj
+*.pdb
