@@ -1712,7 +1712,7 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 		UpdateWindow();
 		RedrawWindow();
 		Invalidate(true);
-		AfxBeginThread(&Threadone, this);  // 启动线程 
+		AfxBeginThread(&Threadone, this);  // 启动线程 z
 		AfxBeginThread(&ThreadOCT, this, THREAD_PRIORITY_NORMAL, 0, 0, NULL);  // THREAD_PRIORITY_IDLE  优先级 
 	}
 	else{
