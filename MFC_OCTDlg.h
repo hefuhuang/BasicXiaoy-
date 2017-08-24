@@ -8,11 +8,11 @@
 #include <math.h>
 #include <vtkMultiThreader.h>
 #include <vtkCallbackCommand.h>
+
 #include "vtkMFCWindow.h"
 #include "RegenvtkColor.h"
 #include "vtkClientServerInterpreterInternals.h"
-//#include "cv.h"
-//#include "highgui.h" 
+
 #include "UIthread.h"
 #include "afxwin.h"  
 #include "glaux.h"
@@ -22,9 +22,10 @@
 #include "AddSheet.h"
 #include "OpencvShowVedio.h"
 #include "vtkMFCWindow.h"
+#include "SysReadAndWrite.h"
 
 /////////////////////////////////////
-VTK_MODULE_INIT(vtkRenderingFreeType)
+VTK_MODULE_INIT(vtkRenderingFreeType);
 /*///////////
 //功能：opencv划线响应函数
 //参数： 5个，意思由变量名可知
@@ -85,6 +86,7 @@ public:
 	void DrawLine(CDC* pDC);
 
 protected:
+	SysReadAndWrite  mSysWandR;
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();

@@ -1,9 +1,43 @@
-﻿Build started 2017/8/22 16:52:06.
+﻿Build started 2017/8/24 19:56:43.
      1>Project "C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /I..\lib /Zi /nologo /W3 /WX- /sdl /O2 /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _WINDOWS /D _DEBUG /D "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)" /D "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)" /D "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)" /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt MFC_OCTDlg.cpp
+         MFC_OCTDlg.cpp
+     1>C:\Users\HHF\Desktop\MFC_OCT\GUISupport\MFC\vtkMFCWindow.h(29): warning C4275: non dll-interface class 'CWnd' used as base for dll-interface class 'vtkMFCWindow'
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : see declaration of 'CWnd'
+                 C:\Users\HHF\Desktop\MFC_OCT\GUISupport\MFC\vtkMFCWindow.h(28) : see declaration of 'vtkMFCWindow'
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/mat.hpp(2586): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/imgproc.hpp(592): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+     1>Project "C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj" (1) is building "C:\Users\HHF\Desktop\MFC_OCT\SysReadAndWrite\SysReadAndWrite.vcxproj" (2:3) on node 2 (GetResolvedLinkLibs target(s)).
+     2>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(364,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     2>Done Building Project "C:\Users\HHF\Desktop\MFC_OCT\SysReadAndWrite\SysReadAndWrite.vcxproj" (GetResolvedLinkLibs target(s)).
      1>Link:
-         MFC_OCT.vcxproj -> C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe
-     1>Done Building Project "C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj" (Build target(s)).
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe" /NOLOGO /LIBPATH:"C:\Program Files\VTK\lib" /LIBPATH:..\opencv\lib /LIBPATH:..\lib "vtkFiltersGeometry-8.1.lib" "vtkIOLegacy-8.1.lib" "vtkRenderingLOD-8.1.lib" "vtkCommonDataModel-8.1.lib" "vtkFiltersCore-8.1.lib" "vtkRenderingVolume-8.1.lib" "vtkImagingHybrid-8.1.lib" "vtkFiltersModeling-8.1.lib" "vtkIOXML-8.1.lib" "vtkIOXMLParser-8.1.lib" "vtkFiltersFlowPaths-8.1.lib" opencv_world320.lib opencv_world320d.lib "vtkRenderingCore-8.1.lib" "vtkInteractionStyle-8.1.lib" "vtkFiltersSources-8.1.lib" "vtkCommonCore-8.1.lib" "vtkCommonExecutionModel-8.1.lib" "vtkRenderingVolumeOpenGL2-8.1.lib" "vtkRenderingOpenGL2-8.1.lib" "vtkInteractionImage-8.1.lib" "vtkRenderingAnnotation-8.1.lib" "vtkViewsCore-8.1.lib" "vtkRenderingImage-8.1.lib" "vtkImagingCore-8.1.lib" "vtkIOImage-8.1.lib" "vtkInteractionWidgets-8.1.lib" "vtkGeovisCore-8.1.lib" "vtkIOGeometry-8.1.lib" "vtkFiltersGeneral-8.1.lib" SpectralRadar.lib opengl32.lib glut32.lib glu32.lib glaux.lib port.lib tiff.lib tiffd.lib portd.lib DelayImp.lib "vtkCommonTransforms-8.1.lib" "vtkCommonMisc-8.1.lib" "vtkCommonMath-8.1.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "vtktiff-8.1.lib" "vtkRenderingFreeType-8.1.lib" "vtkFiltersGeneric-8.1.lib" uafxcwd.lib Libcmtd.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"E:\visiual stdio 2013\install\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.pdb" /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.lib" /MACHINE:X64 x64\Debug\MFC_OCT.res
+         x64\Debug\AddSheet.obj
+         x64\Debug\C2dParamSeting.obj
+         x64\Debug\C3DParaSeting.obj
+         x64\Debug\Dlg3DParam.obj
+         x64\Debug\DlgParam.obj
+         x64\Debug\MFC_OCT.obj
+         x64\Debug\MFC_OCTDlg.obj
+         x64\Debug\OpencvShowVedio.obj
+         x64\Debug\RegenvtkColor.obj
+         x64\Debug\SeconedInterface.obj
+         x64\Debug\stdafx.obj
+         x64\Debug\UIthread.obj
+         x64\Debug\vtkClientServerInterpreterInternals.obj
+         x64\Debug\vtkClientServerStream.obj
+         C:\Users\HHF\Desktop\MFC_OCT\lib\SysReadAndWrite.lib
+     1>SysReadAndWrite.lib(SysReadAndWrite.obj) : error LNK2005: "public: unsigned __int64 __cdecl CFile::SeekToEnd(void)" (?SeekToEnd@CFile@@QEAA_KXZ) already defined in uafxcwd.lib(afxinl1.obj)
+     1>SysReadAndWrite.lib(SysReadAndWrite.obj) : error LNK2005: "public: unsigned __int64 __cdecl CFile::SeekToEnd(void)" (?SeekToEnd@CFile@@QEAA_KXZ) already defined in uafxcwd.lib(afxinl1.obj)
+     1>uafxcw.lib(winmain.obj) : error LNK2005: "class CWinApp * __cdecl AfxGetApp(void)" (?AfxGetApp@@YAPEAVCWinApp@@XZ) already defined in uafxcwd.lib(afxinl2.obj)
+     1>uafxcwd.lib(nolib.obj) : warning LNK4098: defaultlib 'uafxcw.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>Libcmtd.lib(crt0init.obj) : warning LNK4098: defaultlib 'libcmt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe : fatal error LNK1169: one or more multiply defined symbols found
+     1>Done Building Project "C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.59
+Time Elapsed 00:00:05.90

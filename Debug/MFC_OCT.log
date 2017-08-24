@@ -1,0 +1,88 @@
+﻿Build started 2017/8/24 16:41:21.
+     1>Project "C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         E:\visiual stdio 2013\install\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\MFC_OCT.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         E:\visiual stdio 2013\install\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\MFC_OCT.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\GUISupport\MFC\clientCallback.cpp ..\GUISupport\MFC\MouseInteractorHighLight.cpp AddSheet.cpp ButtonPressInterractorStyle.cpp C2dParamSeting.cpp C3DParaSeting.cpp Dlg3DParam.cpp DlgParam.cpp LogReadOrWrite.cpp MFC_OCT.cpp MFC_OCTDlg.cpp OpencvShowVedio.cpp RegenvtkColor.cpp SeconedInterface.cpp SysWriteOrRead.cpp UIthread.cpp vtkClientServerInterpreterInternals.cpp vtkClientServerStream.cpp
+         vtkClientServerStream.cpp
+         vtkClientServerInterpreterInternals.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\vtkclientserverinterpreterinternals.h(5): fatal error C1083: Cannot open include file: 'vtkColorTransferFunction.h': No such file or directory
+         UIthread.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\uithread.cpp(4): warning C4627: '#include "UIthread.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\uithread.cpp(41): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         SysWriteOrRead.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\syswriteorread.h(12): fatal error C1083: Cannot open include file: 'glaux.h': No such file or directory
+         SeconedInterface.cpp
+         RegenvtkColor.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\regenvtkcolor.h(3): fatal error C1083: Cannot open include file: 'vtkVersion.h': No such file or directory
+         OpencvShowVedio.cpp
+         MFC_OCTDlg.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(5): warning C4627: '#include <cmath>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(6): warning C4627: '#include <iostream>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(7): warning C4627: '#include <ctime>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(8): warning C4627: '#include <sstream>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(9): warning C4627: '#include <string>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(10): warning C4627: '#include <fstream>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(11): warning C4627: '#include <algorithm>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(12): warning C4627: '#include <functional>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(13): warning C4627: '#include <cassert>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(14): warning C4627: '#include <chrono>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(15): warning C4627: '#include <vector>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(16): warning C4627: '#include <fcntl.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(17): warning C4627: '#include <io.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(20): warning C4627: '#include <conio.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(21): warning C4627: '#include <vtkTIFFReader.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(22): warning C4627: '#include <vtkImageData.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(23): warning C4627: '#include <vtkMetaImageReader.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(24): warning C4627: '#include "vtkSurfaceReconstructionFilter.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(25): warning C4627: '#include "vtkReverseSense.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(26): warning C4627: '#include <vtkAutoInit.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(4): warning C4603: '_USE_MATH_DEFINES' : macro is not defined or definition is different after precompiled header use
+                 Add macro to precompiled header instead of defining here
+                 c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.cpp(27) : use of precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.h(9): fatal error C1083: Cannot open include file: 'vtkMultiThreader.h': No such file or directory
+         MFC_OCT.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\mfc_octdlg.h(9): fatal error C1083: Cannot open include file: 'vtkMultiThreader.h': No such file or directory
+         LogReadOrWrite.cpp
+         DlgParam.cpp
+         Dlg3DParam.cpp
+         C3DParaSeting.cpp
+         C2dParamSeting.cpp
+         ButtonPressInterractorStyle.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\buttonpressinterractorstyle.h(2): fatal error C1083: Cannot open include file: 'vtkInteractorStyleTrackballCamera.h': No such file or directory
+         AddSheet.cpp
+         MouseInteractorHighLight.cpp
+     1>c:\users\hhf\desktop\mfc_oct\guisupport\mfc\mouseinteractorhighlight.cpp(1): warning C4627: '#include "MouseInteractorHighLight.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\guisupport\mfc\mouseinteractorhighlight.cpp(12): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         clientCallback.cpp
+     1>c:\users\hhf\desktop\mfc_oct\guisupport\mfc\clientcallback.cpp(1): warning C4627: '#include "clientCallback.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\hhf\desktop\mfc_oct\guisupport\mfc\clientcallback.cpp(16): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Generating Code...
+     1>Done Building Project "C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:08.10

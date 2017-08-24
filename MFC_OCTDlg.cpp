@@ -1,6 +1,8 @@
 ﻿
 // MFC_OCTDlg.cpp : 实现文件
 //
+#include "stdafx.h"
+
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <iostream>
@@ -23,22 +25,19 @@
 #include <vtkMetaImageReader.h>
 #include "vtkSurfaceReconstructionFilter.h"
 #include "vtkReverseSense.h"
-#include <vtkAutoInit.h> 
+#include "MFC_OCT.h"
+
+
+#include "MFC_OCTDlg.h" 
+#include "DlgParam.h"
+#include "Dlg3DParam.h"
+#include "afxdialogex.h"
 
 using namespace std;
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
 VTK_MODULE_INIT(vtkRenderingOpenGL2);
 VTK_MODULE_INIT(vtkInteractionStyle);
-
-#include "stdafx.h"
-#include "MFC_OCT.h"
-
-#include "MFC_OCTDlg.h" 
-#include "DlgParam.h"
-#include "Dlg3DParam.h"
-
-#include "afxdialogex.h"
 
 using namespace cv;
 
@@ -1714,6 +1713,11 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 		Invalidate(true);
 		AfxBeginThread(&Threadone, this);  // 启动线程 z
 		AfxBeginThread(&ThreadOCT, this, THREAD_PRIORITY_NORMAL, 0, 0, NULL);  // THREAD_PRIORITY_IDLE  优先级 
+		
+		CString str("..\\sys\\systemConfig.txt");
+		mSysWandR.InitLog(str);
+		mSysWandR.WriteString(str);
+		mSysWandR.EndLog();
 	}
 	else{
 		flag = !flag;
@@ -1743,6 +1747,7 @@ UINT CMFC_OCTDlg::ThreadOCT(LPVOID lpParam)
 UINT CMFC_OCTDlg::Threadone(LPVOID param)
 {
 	CMFC_OCTDlg* pDlg = reinterpret_cast<CMFC_OCTDlg*>(param);
+	
 	while (true)
 	{
 		pDlg->PostMessageW(MY_MSG, 1, 0);
@@ -2315,3 +2320,5 @@ void CMFC_OCTDlg::DrawLine(CDC* pDC)
 	}
 
 }
+
+

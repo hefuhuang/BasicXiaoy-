@@ -2,7 +2,7 @@
 //
 
 #include "UIthread.h"
-
+#include "stdafx.h"
 
 // UIthread
 

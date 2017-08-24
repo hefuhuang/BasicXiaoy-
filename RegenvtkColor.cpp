@@ -8,6 +8,7 @@
 //	RegenvtkColor *cb = new RegenvtkColor;
 //	return cb;
 //}
+
 RegenvtkColor::RegenvtkColor()
 {
 }

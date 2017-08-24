@@ -67,7 +67,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>C:\Program Files\VTK\include\vtk-8.1;..\IO\Image;C:\Program Files\VTK\lib;..\opencv\lib;C:\Users\HHF\Desktop\Project\MFC_OCT\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>..\opencv\sources\modules\core\src;..\GUISupport\MFC;C:\Program Files\VTK\lib;..\tiff\source;..\lib;$(ReferencePath)</ReferencePath>
-    <IncludePath>..\GUISupport\MFC;..\opencv\include;..\opencv\sources\modules\core\src;..\opencv;C:\Program Files\VTK\include\vtk-8.1;C:\Users\HHF\Desktop\Project\MFC_OCT\tiff\source;C:\Users\HHF\Desktop\Project\MFC_OCT\tiff\include;C:\Users\HHF\Desktop\MFC_OCT\opencv\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\SysReadAndWrite;..\GUISupport\MFC;..\opencv\include;..\opencv\sources\modules\core\src;..\opencv;C:\Program Files\VTK\include\vtk-8.1;..\tiff\source;..\tiff\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -137,23 +137,20 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;_DEBUG;vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2);vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2);vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\GUISupport\MFC\clientCallback.h" />
-    <ClInclude Include="..\GUISupport\MFC\MouseInteractorHighLight.h" />
     <ClInclude Include="..\GUISupport\MFC\vtkGUISupportMFCModule.h" />
     <ClInclude Include="AddSheet.h" />
-    <ClInclude Include="ButtonPressInterractorStyle.h" />
     <ClInclude Include="C2dParamSeting.h" />
     <ClInclude Include="C3DParaSeting.h" />
     <ClInclude Include="CvImgCtrl.h" />
     <ClInclude Include="Dlg3DParam.h" />
     <ClInclude Include="DlgParam.h" />
-    <ClInclude Include="LogReadOrWrite.h" />
     <ClInclude Include="MFC_OCT.h" />
     <ClInclude Include="MFC_OCTDlg.h" />
     <ClInclude Include="OpencvShowVedio.h" />
@@ -162,7 +159,6 @@
     <ClInclude Include="SeconedInterface.h" />
     <ClInclude Include="SpectralRadar.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="SysWriteOrRead.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UIthread.h" />
     <ClInclude Include="vtkClientServerInterpreterInternals.h" />
@@ -170,15 +166,11 @@
     <ClInclude Include="vtkGUISupportMFCModule.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\GUISupport\MFC\clientCallback.cpp" />
-    <ClCompile Include="..\GUISupport\MFC\MouseInteractorHighLight.cpp" />
     <ClCompile Include="AddSheet.cpp" />
-    <ClCompile Include="ButtonPressInterractorStyle.cpp" />
     <ClCompile Include="C2dParamSeting.cpp" />
     <ClCompile Include="C3DParaSeting.cpp" />
     <ClCompile Include="Dlg3DParam.cpp" />
     <ClCompile Include="DlgParam.cpp" />
-    <ClCompile Include="LogReadOrWrite.cpp" />
     <ClCompile Include="MFC_OCT.cpp" />
     <ClCompile Include="MFC_OCTDlg.cpp" />
     <ClCompile Include="OpencvShowVedio.cpp" />
@@ -188,7 +180,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SysWriteOrRead.cpp" />
     <ClCompile Include="UIthread.cpp" />
     <ClCompile Include="vtkClientServerInterpreterInternals.cpp" />
     <ClCompile Include="vtkClientServerStream.cpp" />
@@ -206,8 +197,8 @@
     <Image Include="res\MFC_OCT.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GUISupport\MFC\vtkGUISupportMFC.vcxproj">
-      <Project>{ce64bb1f-c8d6-319a-9d75-b6ae4abbf346}</Project>
+    <ProjectReference Include="..\SysReadAndWrite\SysReadAndWrite.vcxproj">
+      <Project>{206eac4e-addd-42eb-9958-b87572c8f0ca}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
