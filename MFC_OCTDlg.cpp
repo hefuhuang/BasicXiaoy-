@@ -15,12 +15,12 @@
 #include <cassert>
 #include <chrono>
 #include <vector>
-#include<fcntl.h>
-#include<io.h>
+#include <fcntl.h>
+#include <io.h>
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h> 
-#include<vtkTIFFReader.h> 
+#include <vtkTIFFReader.h> 
 #include <vtkImageData.h>
 #include <vtkMetaImageReader.h>
 #include "vtkSurfaceReconstructionFilter.h"

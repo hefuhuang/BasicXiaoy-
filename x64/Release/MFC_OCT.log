@@ -1,0 +1,20 @@
+﻿生成启动时间为 2017/8/29 11:48:05。
+     1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W1 /WX- /O2 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt /D "_AFXDLL" MFC_OCT.cpp MFC_OCTDlg.cpp RegenvtkColor.cpp UIthread.cpp vtkClientServerInterpreterInternals.cpp
+         MFC_OCT.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\MFC_OCTDlg.h(9): fatal error C1083: 无法打开包括文件: “vtkMultiThreader.h”: No such file or directory
+         MFC_OCTDlg.cpp
+     1>MFC_OCTDlg.cpp(23): fatal error C1083: 无法打开包括文件: “vtkTIFFReader.h”: No such file or directory
+         RegenvtkColor.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\RegenvtkColor.h(3): fatal error C1083: 无法打开包括文件: “vtkVersion.h”: No such file or directory
+         UIthread.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\MFC_OCTDlg.h(9): fatal error C1083: 无法打开包括文件: “vtkMultiThreader.h”: No such file or directory
+         vtkClientServerInterpreterInternals.cpp
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\vtkClientServerInterpreterInternals.h(5): fatal error C1083: 无法打开包括文件: “vtkColorTransferFunction.h”: No such file or directory
+         正在生成代码...
+     1>已完成生成项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:08.88
