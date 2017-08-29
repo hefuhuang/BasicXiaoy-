@@ -1715,9 +1715,9 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 		AfxBeginThread(&ThreadOCT, this, THREAD_PRIORITY_NORMAL, 0, 0, NULL);  // THREAD_PRIORITY_IDLE  优先级 
 		
 		CString str("..\\sys\\systemConfig.txt");
-		mSysWandR.InitLog(str);
-		mSysWandR.WriteString(str);
-		mSysWandR.EndLog();
+		//mSysWandR.InitLog(str);
+		//mSysWandR.WriteString(str);
+		//mSysWandR.EndLog();
 	}
 	else{
 		flag = !flag;

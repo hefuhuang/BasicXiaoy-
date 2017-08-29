@@ -22,7 +22,7 @@
 #include "AddSheet.h"
 #include "OpencvShowVedio.h"
 #include "vtkMFCWindow.h"
-#include "SysReadAndWrite.h"
+//#include "SysReadAndWrite.h"
 
 /////////////////////////////////////
 VTK_MODULE_INIT(vtkRenderingFreeType);
@@ -86,7 +86,7 @@ public:
 	void DrawLine(CDC* pDC);
 
 protected:
-	SysReadAndWrite  mSysWandR;
+	//SysReadAndWrite  mSysWandR;
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
