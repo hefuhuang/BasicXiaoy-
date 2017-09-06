@@ -2366,8 +2366,8 @@ void CMFC_OCTDlg::DrawLine(CDC* pDC)
 void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialogEx::OnSize(nType, cx, cy);
-	UpdateWindow();
-	if (nType != SIZE_MINIMIZED)  //判断窗口是不是最小化了，因为窗口最小化之后 ，窗口的长和宽会变成0，当前一次变化的时就会出现除以0的错误操作
+
+	if (nType != SIZE_MINIMIZED) 
 	{
 		ChangeSize(IDC_LIST1, cx, cy);  //对每一个控件依次做调整
 		ChangeSize(IDC_LIST2, cx, cy);
