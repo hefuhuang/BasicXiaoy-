@@ -198,6 +198,7 @@ BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
 
 	ON_BN_CLICKED(IDC_BUTTON_Snippintool, &CMFC_OCTDlg::OnBnClickedButtonSnippintool)
 	ON_CBN_SELCHANGE(IDC_COMB3dModel, &CMFC_OCTDlg::OnCbnSelchangeComb3dmodel)
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 // CMFC_OCTDlg 消息处理程序
 
@@ -252,7 +253,9 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	//在ping屏幕上绘制状态栏
 	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, ID_INDICATOR_TIME);
 
+	SetWindowText(_T("regenovo"));
 
+	GetClientRect(m_TotalRect);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -2167,9 +2170,12 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	str.Format(_T("%d"), point.y);
 	GetDlgItem(IDC_EDITPY)->SetWindowText(str);
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
-
 	strTime= tm.Format("%y-%m-%d %H:%M:%S");
 
+	CRect rect;
+	GetClientRect(&rect);
+	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
+	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
 	m_Statusbar.SetPaneText(1, strTime);
 	m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
 	//RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
@@ -2355,3 +2361,60 @@ void CMFC_OCTDlg::DrawLine(CDC* pDC)
 }
 
 
+
+
+void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
+{
+	CDialogEx::OnSize(nType, cx, cy);
+	UpdateWindow();
+	if (nType != SIZE_MINIMIZED)  //判断窗口是不是最小化了，因为窗口最小化之后 ，窗口的长和宽会变成0，当前一次变化的时就会出现除以0的错误操作
+	{
+		ChangeSize(IDC_LIST1, cx, cy);  //对每一个控件依次做调整
+		ChangeSize(IDC_LIST2, cx, cy);
+		ChangeSize(IDC_Xiaoy_STATIC, cx, cy);
+		ChangeSize(IDC_BUTTONParam, cx, cy);
+		ChangeSize(IDC_STATIC, cx, cy);
+		ChangeSize(IDC_BUTTON_Start, cx, cy);
+		ChangeSize(IDC_BUTTON_3D, cx, cy);
+		ChangeSize(IDC_STATIC_LIGHT, cx, cy);
+		ChangeSize(IDC_SLIDER_LIFGT, cx, cy);
+		ChangeSize(IDC_SLIDER_Laser, cx, cy);
+		ChangeSize(IDC_SLIDER_LIFGT3, cx, cy);
+		ChangeSize(IDC_3Dmodel, cx, cy);
+		ChangeSize(IDC_COMB3dModel, cx, cy);
+		ChangeSize(IDC_STATIC_Vedio, cx, cy);
+		ChangeSize(IDC_EDITPX, cx, cy);
+		ChangeSize(IDC_BUTTON_Snippintool, cx, cy);
+		ChangeSize(IDC_BUTTON_AddPicture, cx, cy);
+		ChangeSize(IDC_EDIT_TestScroll, cx, cy);
+		ChangeSize(IDC_EDITPY, cx, cy);
+		ChangeSize(IDC_EDITPZ, cx, cy);
+		ChangeSize(IDC_EDIT_ShowTime, cx, cy);
+		ChangeSize(IDC_STATIC, cx, cy);
+		//ChangeSize(IDC_STATIC_model, cx, cy);
+
+		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标；
+	}
+
+}
+
+
+void CMFC_OCTDlg::ChangeSize(UINT nID, int x, int y)
+{
+	CWnd *pWnd;
+	pWnd = this->GetDlgItem(nID);
+	if (pWnd != NULL)     //判断是否为空，因为在窗口创建的时候也会调用OnSize函数，但是此时各个控件还没有创建，Pwnd为空
+	{
+		CRect rec;
+		pWnd->GetWindowRect(&rec);                          //获取控件变化前的大小
+		ScreenToClient(&rec);                               //将控件大小装换位在对话框中的区域坐标
+		rec.left = rec.left*x / this->m_TotalRect.Width();  //按照比例调整空间的新位置
+		rec.top = rec.top*y / this->m_TotalRect.Height();
+		rec.bottom = rec.bottom*y / this->m_TotalRect.Height();
+		rec.right = rec.right*x / this->m_TotalRect.Width();
+		pWnd->MoveWindow(rec);   //伸缩控件
+	}
+
+
+
+}

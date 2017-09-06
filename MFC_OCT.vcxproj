@@ -208,8 +208,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Project\MFC_OCT\test\test.bmp" />
+    <Image Include="..\icon.ico" />
+    <Image Include="..\icon32x32.ico" />
     <Image Include="..\test\test.bmp" />
     <Image Include="..\test\TestTiff.bmp" />
+    <Image Include="icon1.ico" />
+    <Image Include="icon2.ico" />
     <Image Include="res\MFC_OCT.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -179,5 +179,17 @@
     <Image Include="..\test\TestTiff.bmp">
       <Filter>源文件\资源文件</Filter>
     </Image>
+    <Image Include="icon1.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="icon2.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="..\icon.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="..\icon32x32.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

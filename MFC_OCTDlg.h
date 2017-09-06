@@ -89,6 +89,8 @@ public:
 	// 实现 
 	void DrawLine(CDC* pDC);
 
+	void ChangeSize(UINT nID, int x, int y);
+
 protected:
 	//SysReadAndWrite  mSysWandR;
 	HICON m_hIcon;
@@ -111,6 +113,7 @@ private:
 	//vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper; //定义绘制者
 	//vtkSmartPointer<vtkRenderer> ren;
 	CStatusBar m_Statusbar;   // status 
+	CRect  m_TotalRect; 
 
 	vtkNew<vtkInteractorEventRecorder> recorder;
 	vtkNew<vtkRenderWindowInteractor> InteractorCp;
@@ -147,6 +150,7 @@ public:
 	CComboBox mModel3DChioce;
 	afx_msg void OnCbnSelchangeComb3dmodel();
 	CStatic m_ImageVedio;
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };
 
 class Timer {
