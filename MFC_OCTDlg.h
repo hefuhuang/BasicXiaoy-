@@ -8,6 +8,7 @@
 #include <math.h>
 #include <vtkMultiThreader.h>
 #include <vtkCallbackCommand.h>
+#include <vtkAutoInit.h> 
 
 #include "vtkMFCWindow.h"
 #include "RegenvtkColor.h"
@@ -16,16 +17,19 @@
 #include "UIthread.h"
 #include "afxwin.h"  
 #include "glaux.h"
-#include "glut.h"
 #include "vtktiff/libtiff/tiff.h" 
 #include "CvImgCtrl.h"
 #include "AddSheet.h"
 #include "OpencvShowVedio.h"
 #include "vtkMFCWindow.h"
+#include "OCTProgressBar.h"
+
 //#include "SysReadAndWrite.h"
 
 /////////////////////////////////////
+
 VTK_MODULE_INIT(vtkRenderingFreeType);
+
 /*///////////
 //功能：opencv划线响应函数
 //参数： 5个，意思由变量名可知
@@ -106,6 +110,7 @@ private:
 	//vtkSmartPointer<vtkVolume> volume; //表示透示图中的一组三维数据
 	//vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper; //定义绘制者
 	//vtkSmartPointer<vtkRenderer> ren;
+	CStatusBar m_Statusbar;   // status 
 
 	vtkNew<vtkInteractorEventRecorder> recorder;
 	vtkNew<vtkRenderWindowInteractor> InteractorCp;
@@ -141,6 +146,7 @@ public:
 	afx_msg void OnBnClickedButtonSnippintool();
 	CComboBox mModel3DChioce;
 	afx_msg void OnCbnSelchangeComb3dmodel();
+	CStatic m_ImageVedio;
 };
 
 class Timer {

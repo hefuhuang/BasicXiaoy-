@@ -129,7 +129,7 @@
     <Link>
       <AdditionalDependencies>vtkFiltersGeometry-8.1.lib;vtkIOLegacy-8.1.lib;vtkRenderingLOD-8.1.lib;vtkCommonDataModel-8.1.lib;vtkFiltersCore-8.1.lib;vtkRenderingVolume-8.1.lib;vtkImagingHybrid-8.1.lib;vtkFiltersModeling-8.1.lib;vtkIOXML-8.1.lib;vtkIOXMLParser-8.1.lib;vtkFiltersFlowPaths-8.1.lib;opencv_world320.lib;opencv_world320d.lib;vtkRenderingCore-8.1.lib;vtkInteractionStyle-8.1.lib;vtkFiltersSources-8.1.lib;vtkCommonCore-8.1.lib;vtkCommonExecutionModel-8.1.lib;vtkRenderingVolumeOpenGL2-8.1.lib;vtkRenderingOpenGL2-8.1.lib;vtkInteractionImage-8.1.lib;vtkRenderingAnnotation-8.1.lib;vtkViewsCore-8.1.lib;vtkRenderingImage-8.1.lib;vtkImagingCore-8.1.lib;vtkIOImage-8.1.lib;vtkInteractionWidgets-8.1.lib;vtkGeovisCore-8.1.lib;vtkIOGeometry-8.1.lib;vtkFiltersGeneral-8.1.lib;SpectralRadar.lib;opengl32.lib;glut32.lib;glu32.lib;glaux.lib;port.lib;tiff.lib;tiffd.lib;portd.lib;DelayImp.lib;vtkCommonTransforms-8.1.lib;vtkCommonMisc-8.1.lib;vtkCommonMath-8.1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;vtktiff-8.1.lib;vtkRenderingFreeType-8.1.lib;vtkFiltersGeneric-8.1.lib;uafxcwd.lib;Libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Program Files\VTK\lib;..\opencv\lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>SysReadAndWrite.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <PreventDllBinding>
       </PreventDllBinding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -157,6 +157,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Global\GlobalParameter.h" />
     <ClInclude Include="..\GUISupport\MFC\vtkGUISupportMFCModule.h" />
     <ClInclude Include="AddSheet.h" />
     <ClInclude Include="C2dParamSeting.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="DlgParam.h" />
     <ClInclude Include="MFC_OCT.h" />
     <ClInclude Include="MFC_OCTDlg.h" />
+    <ClInclude Include="OCTProgressBar.h" />
     <ClInclude Include="OpencvShowVedio.h" />
     <ClInclude Include="RegenvtkColor.h" />
     <ClInclude Include="Resource.h" />
@@ -186,6 +188,7 @@
     <ClCompile Include="DlgParam.cpp" />
     <ClCompile Include="MFC_OCT.cpp" />
     <ClCompile Include="MFC_OCTDlg.cpp" />
+    <ClCompile Include="OCTProgressBar.cpp" />
     <ClCompile Include="OpencvShowVedio.cpp" />
     <ClCompile Include="RegenvtkColor.cpp" />
     <ClCompile Include="SeconedInterface.cpp" />
@@ -212,6 +215,11 @@
   <ItemGroup>
     <ProjectReference Include="..\SysReadAndWrite\SysReadAndWrite.vcxproj">
       <Project>{206eac4e-addd-42eb-9958-b87572c8f0ca}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

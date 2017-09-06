@@ -102,6 +102,12 @@
     <ClInclude Include="vtkGUISupportMFCModule.h">
       <Filter>vtk</Filter>
     </ClInclude>
+    <ClInclude Include="..\Global\GlobalParameter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OCTProgressBar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_OCT.cpp">
@@ -145,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="vtkClientServerStream.cpp">
       <Filter>vtk\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OCTProgressBar.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

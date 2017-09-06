@@ -2,8 +2,8 @@
 // MFC_OCTDlg.cpp : 实现文件
 //
 #include "stdafx.h"
-
 #define _USE_MATH_DEFINES
+
 #include <cmath>
 #include <iostream>
 #include <ctime>
@@ -57,6 +57,13 @@ bool GetBeginPoint = false;
 static CvPoint BeginPoint = Point(0, 0); //初始化起始点
 static CvPoint EndPoint = Point(0, 0); //初始化  
 int Model3dStyle=0;
+CRect GlobalRect; 
+
+static UINT BASED_CODE indicators[] =
+{
+	ID_INDICATOR_NISH,
+	ID_INDICATOR_TIME
+};
 
 class CAboutDlg : public CDialogEx
 {
@@ -170,6 +177,7 @@ void CMFC_OCTDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_SLIDER_Laser, mScrollLaser);
 	DDX_Control(pDX, IDC_SLIDER_LIFGT3, mScrollGrayLevel);
 	DDX_Control(pDX, IDC_COMB3dModel, mModel3DChioce);
+	DDX_Control(pDX, IDC_STATIC_Vedio, m_ImageVedio);
 }
 
 BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
@@ -232,7 +240,19 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	
 	mModel3DChioce.SetCurSel(0);
 
+	GetDlgItem(IDC_STATIC_Vedio)->GetClientRect(&GlobalRect);
 	//ShowWindow(SW_MAXIMIZE);
+
+	m_Statusbar.Create(this);
+	m_Statusbar.SetIndicators(indicators, sizeof(indicators) / sizeof(UINT));  // set the number of status 
+	CRect rect;
+	GetClientRect(&rect);
+	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
+	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
+	//在ping屏幕上绘制状态栏
+	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, ID_INDICATOR_TIME);
+
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -282,7 +302,6 @@ void CMFC_OCTDlg::OnPaint()
 		CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
 		CDC *pDC = this->GetDC();
 		this->DrawLine(pDC);
-
 		////////////////////
 		CDialogEx::OnPaint();
 	}
@@ -304,6 +323,10 @@ void CMFC_OCTDlg::OnBnClickedButtonAddpicture()
 		GetDlgItem(IDC_BUTTON_AddPicture)->SetWindowTextW(_T("CLOSE"));
 		
 		namedWindow("show", WINDOW_AUTOSIZE);
+		HWND hWnd = (HWND)cvGetWindowHandle("show");
+		HWND hParent = ::GetParent(hWnd);
+		::SetParent(hWnd, GetDlgItem(IDC_STATIC_Vedio)->m_hWnd);
+		::ShowWindow(hParent, SW_HIDE);
 
 		AfxBeginThread(&ShowVedio, NULL);
 		//Mat  img = imread("..//test//tiled.tif");
@@ -327,10 +350,13 @@ UINT ShowVedio(LPVOID mDParam)
 
 	while (true)
 	{ 
+		cv::Mat m_dst;
 	cv::Mat img = imread("..//test//tiled.tif", 1);  //1:为原图颜色,0:为灰度图
 	cv::line(img,BeginPoint,EndPoint,Scalar(255,0,0),2);   // 设置线粗与颜色
 	waitKey(10);
-	imshow("show", img);
+	cv::Rect dst(GlobalRect.left, GlobalRect.top, GlobalRect.right, GlobalRect.bottom);
+	cv::resize(img,m_dst, cv::Size(GlobalRect.Width(), GlobalRect.Height()));
+	imshow("show", m_dst);
 	if (true==flagAc)
 		{
 			break;
@@ -632,7 +658,6 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	{
 		//actor->SetGlobalWarningDisplay(0);
 		double scalarRange[2];
-
 		flag3D = !flag3D;
 		GetDlgItem(IDC_BUTTON_3D)->SetWindowTextW(_T("CLOSE"));
 		char* vtkfilePath = "../test/volume.vtk";
@@ -671,22 +696,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		opacityTransferFunction->AddPoint(scalarRange[0], 0);
 		opacityTransferFunction->AddPoint(scalarRange[1], 1);
 		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
-		//gradient->AddPoint(0, 1, 0.0, 0);
-		//gradient->AddPoint(-69.8, 0, -8.037, 0.414);
-		//gradient->AddPoint(-8.037, 0.414, 89.3, 1);
-		//volumeProperty->SetGradientOpacity(gradient);
-		//opacityTransferFunction->AddSegment(opacityLevel - 0.5*opacityWindow, 0.2, // 0.0, 0.01
-		//	opacityLevel + 0.5*opacityWindow, 10.0); // 1.0, 0.01
-		//opacityTransferFunction->AddSegment(0, -1, 255, 13);     // 设置灰度与透明度的线性方程函数 
-		//透明度设置 
-		//volumeProperty->SetGradientOpacity(gradient);
-		//color->AddRGBSegment(1, 0.1, 0.0, 0.0, 
-		//	                 255, 1.0, 1.0, 0.0);   // 设置渲染的色彩 
-		//颜色映射函数
-		//color->AddRGBPoint(-69, 0, 0, 0); //灰度值及RGB颜色值
-		//color->AddRGBPoint(33.9152, 0, 0,0);
-		//color->AddRGBPoint(43.0, 0.865, 0.865,0.865);
-		//color->AddRGBPoint(89.345, 1, 1, 1);
+
 		color->RemoveAllPoints();
 		color->AddRGBPoint(scalarRange[0], 0, 0, 0);
 		color->AddRGBPoint(scalarRange[1], 1.0, 1, 1);
@@ -993,7 +1003,7 @@ int CMFC_OCTDlg::Model3Dstyle2()
 		}
 		distance = distance / 2.0;
 		VolMapper->GetGradientMagnitudeBias();
-		VolMapper->SetInputConnection(ExtractVOI->GetOutputPort());
+		VolMapper->SetInputConnection(StruVtkreader->GetOutputPort());
 		VolMapper->GetInput()->GetScalarRange(scalarRange);
 
 		volumeProperty->ShadeOn();
@@ -1711,9 +1721,27 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 		UpdateWindow();
 		RedrawWindow();
 		Invalidate(true);
-		AfxBeginThread(&Threadone, this);  // 启动线程 z
+		AfxBeginThread(Threadone, this);  // 启动线程 z
 		AfxBeginThread(&ThreadOCT, this, THREAD_PRIORITY_NORMAL, 0, 0, NULL);  // THREAD_PRIORITY_IDLE  优先级 
-		
+
+		CProgressCtrl myProCtrl;
+		CRect rect,proRect;
+		m_Picture.GetClientRect(&rect);
+		proRect.left = rect.left + rect.Width() / 2 - 200;
+		proRect.top = rect.top + rect.Height() / 2;
+		proRect.right = rect.right - rect.Width() / 2 + 200;
+		proRect.bottom = rect.bottom - rect.Height() / 2 + 20;
+		myProCtrl.Create(WS_VISIBLE, proRect, this, 99); //创建位置、大小
+		myProCtrl.SetRange(0, 100);
+		for (int i = 0; i < 100; i++)
+		{
+			myProCtrl.OffsetPos(1);
+			CString str;
+			str.Format(_T("%d%%"), i); //百分比
+			(GetDlgItem(IDC_EDIT_TestScroll))->SetWindowText(str);
+			Sleep(100);
+		}
+
 		CString str("..\\sys\\systemConfig.txt");
 		//mSysWandR.InitLog(str);
 		//mSysWandR.WriteString(str);
@@ -2138,8 +2166,13 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	GetDlgItem(IDC_EDITPX)->SetWindowText(str);
 	str.Format(_T("%d"), point.y);
 	GetDlgItem(IDC_EDITPY)->SetWindowText(str);
-
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
+
+	strTime= tm.Format("%y-%m-%d %H:%M:%S");
+
+	m_Statusbar.SetPaneText(1, strTime);
+	m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
+	//RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
 
 	CDialogEx::OnTimer(nIDEvent);
 }
