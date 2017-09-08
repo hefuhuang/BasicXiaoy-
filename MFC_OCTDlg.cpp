@@ -2135,18 +2135,6 @@ void CMFC_OCTDlg::showBmpImage(int ID)
 }
 
 
-//void CMFC_OCTDlg::Pipeline() {
-//	//创建球
-//	sphere->SetRadius(1);  
-//	sphere->SetThetaResolution(18); 
-//	sphere->SetPhiResolution(18);
-//	sphere->LatLongTessellationOn();  
-//	sphereMapper->SetInputData(sphere->GetOutput());
-//	sphereActor->SetMapper(sphereMapper); 
-//	ren->AddActor(sphereActor); 
-//} 
-
-
 void CMFC_OCTDlg::OnBnClickedButtonparam()
 {
 	CAddSheet sheet(_T("参数设置"));
