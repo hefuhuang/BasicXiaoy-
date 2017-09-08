@@ -256,6 +256,7 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	SetWindowText(_T("regenovo"));
 
 	GetClientRect(m_TotalRect);
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -1724,8 +1725,23 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 		UpdateWindow();
 		RedrawWindow();
 		Invalidate(true);
-		AfxBeginThread(Threadone, this);  // 启动线程 z
-		AfxBeginThread(&ThreadOCT, this, THREAD_PRIORITY_NORMAL, 0, 0, NULL);  // THREAD_PRIORITY_IDLE  优先级 
+
+		CMutex mutex;                    //互斥量对象 
+		CEvent g_Event;               //事件对象实现同步   实现多进程中的多线程的同步  
+
+		CSemaphore mySemaphore(4, 4);   //信号量 
+		CCriticalSection g_cs;         //临界区对象  
+		
+		//WSAAsyncSelect();  // 异步套嵌字  自动设置为非阻塞模式。
+		//WSAStartup(); 
+		//SOCKET socket(int af, int type, int protocol);
+		//int bind( SOCKET s, const struct sockaddr FAR*name, intnamelen);
+
+		char g_str[] = "how to use the CEvent synchronization classes";
+
+		OCTthreadHandle = AfxBeginThread(Threadone, this);  // 启动线程 
+		DrawThreadHandle = AfxBeginThread(&ThreadOCT, this, THREAD_PRIORITY_NORMAL, 0, 0, NULL);  // THREAD_PRIORITY_IDLE  优先级 
+		DrawThreadHandle->m_bAutoDelete = true;     // 线程解决方案 
 
 		CProgressCtrl myProCtrl;
 		CRect rect,proRect;
@@ -1742,7 +1758,7 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 			CString str;
 			str.Format(_T("%d%%"), i); //百分比
 			(GetDlgItem(IDC_EDIT_TestScroll))->SetWindowText(str);
-			Sleep(100);
+			Sleep(10);
 		}
 
 		CString str("..\\sys\\systemConfig.txt");
@@ -2359,8 +2375,6 @@ void CMFC_OCTDlg::DrawLine(CDC* pDC)
 	}
 
 }
-
-
 
 
 void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)

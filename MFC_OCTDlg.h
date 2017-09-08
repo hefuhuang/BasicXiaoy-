@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <math.h>
+#include <afxinet.h>
 #include <vtkMultiThreader.h>
 #include <vtkCallbackCommand.h>
 #include <vtkAutoInit.h> 
@@ -92,7 +93,6 @@ public:
 	void ChangeSize(UINT nID, int x, int y);
 
 protected:
-	//SysReadAndWrite  mSysWandR;
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
@@ -101,30 +101,16 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg LRESULT ReadMatShow(WPARAM wParam, LPARAM lParam);
-	//afx_msg LRESULT MyMessage(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP();
 private:
-	//vtkSmartPointer<vtkVolumeProperty> volumeProperty;  //体绘器属性 
-	//vtkSmartPointer<vtkColorTransferFunction> color;
-	//vtkSmartPointer<vtkPiecewiseFunction> gradient;
-	//vtkSmartPointer<vtkPiecewiseFunction> opacityTransferFunction; // 一维分段函数转换 
-	//vtkSmartPointer<vtkStructuredPointsReader> StruVtkreader;
-	//vtkSmartPointer<vtkVolume> volume; //表示透示图中的一组三维数据
-	//vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper; //定义绘制者
-	//vtkSmartPointer<vtkRenderer> ren;
+
+	CWinThread*  OCTthreadHandle;
+	CWinThread*  DrawThreadHandle;
 	CStatusBar m_Statusbar;   // status 
 	CRect  m_TotalRect; 
-
 	vtkNew<vtkInteractorEventRecorder> recorder;
 	vtkNew<vtkRenderWindowInteractor> InteractorCp;
-	//vtkSmartPointer<vtkWin32OpenGLRenderWindow> renWin;
-	//vtkSmartPointer<vtkRenderWindowInteractor> iren;
-	
-	//vtkSmartPointer<vtkAxesActor> axes;
-	//vtkSmartPointer<vtkOrientationMarkerWidget> widget;
-	//vtkSmartPointer<vtkInteractorStyleTrackballCamera> style;//交互摄像机
-	//vtkSmartPointer<vtkCamera> camera;
-	//vtkSmartPointer<vtkClientServerInterpreterInternals> client;
+
 public:
 	CStatic m_Picture;
 	//POINT  ptBorder;

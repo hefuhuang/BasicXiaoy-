@@ -39,6 +39,16 @@ CMFC_OCTApp theApp;
 
 BOOL CMFC_OCTApp::InitInstance()
 {
+
+	HANDLE hObject = CreateMutex(NULL, FALSE, _T("CMFC_OCTApp"));
+
+	if (GetLastError() == ERROR_ALREADY_EXISTS)
+	{
+		AfxMessageBox(_T("软件已经打开，请关闭后重试！"));
+		CloseHandle(hObject);
+		return FALSE;
+	}
+
 	AfxOleInit();
 	// 如果一个运行在 Windows XP 上的应用程序清单指定要
 	// 使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式，
