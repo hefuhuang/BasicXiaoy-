@@ -486,127 +486,7 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 void CMFC_OCTDlg::Model3Dstyledefault()
 {
 	vtkObject::GlobalWarningDisplayOff();
-	//vtkStructuredPointsReader* StruVtkreader = vtkStructuredPointsReader::New();
-	//vtkVolumeProperty *volumeProperty = vtkVolumeProperty::New();  //体绘器属性 
-	//vtkVolumeRayCastIsosurfaceFunction* surfaceFunction = vtkVolumeRayCastIsosurfaceFunction::New();  //等值面绘制函数
-	//vtkVolumeRayCastCompositeFunction *compositeFunction = vtkVolumeRayCastCompositeFunction::New();  // 合成体绘制函数
-	//vtkGPUVolumeRayCastMapper *VolMapper = vtkGPUVolumeRayCastMapper::New(); //定义绘制者
-	//vtkPiecewiseFunction* gradient = vtkPiecewiseFunction::New();
-	//vtkColorTransferFunction* color = vtkColorTransferFunction::New();
-	//vtkVolume *volume = vtkVolume::New(); //表示透示图中的一组三维数据
-	//vtkAxesActor* axes = vtkAxesActor::New();
-	//vtkPiecewiseFunction *opacityTransferFunction = vtkPiecewiseFunction::New(); // 一维分段函数转换 
-	//vtkInteractorStyleTrackballCamera *style = vtkInteractorStyleTrackballCamera::New();//交互摄像机
-	//vtkOrientationMarkerWidget* widget = vtkOrientationMarkerWidget::New();
-	//vtkWin32OpenGLRenderWindow *renWin = vtkWin32OpenGLRenderWindow::New();
-	//vtkWin32RenderWindowInteractor *iren = vtkWin32RenderWindowInteractor::New();
-	//vtkPolyDataReader* vtkGridReader = vtkPolyDataReader::New();
-	//vtkDataSetMapper* mapperdata = vtkDataSetMapper::New();
-	//vtkCamera* camera = vtkCamera::New();
-	//vtkStripper* strip = vtkStripper::New();
-	//vtkContourFilter*  Extract = vtkContourFilter::New();
-	//vtkExtractVOI*   ExtractVOI = vtkExtractVOI::New();
-	//vtkMultiThreader *threadEnd = vtkMultiThreader::New();
-
-	//vtkImageReader *reader = vtkImageReader::New();
-	//vtkImageReader2 *reader2 = vtkImageReader2::New();
-	//vtkTIFFReader *TiffReader = vtkTIFFReader::New();
-	//vtkParticleReader *readerP = vtkParticleReader::New();
-	//vtkMetaImageReader *readerM;
-	//vtkPolyData* ployData = vtkPolyData::New();
-	//vtkMarchingCubes*  MarchCube = vtkMarchingCubes::New();
-	//vtkImageCast *readerImageCast = vtkImageCast::New();
-	//vtkSmartVolumeMapper *SmvoluMapper = vtkSmartVolumeMapper::New();
-	//vtkPolyDataMapper* ploymappervtkPolyDataMapper = vtkPolyDataMapper::New();
-	//vtkAbstractMapper3D *mapper = vtkAbstractMapper3D::New();
-	//vtkActor* actor = vtkActor::New();
-	//vtkImageActor *imageActor = vtkImageActor::New();
-	//vtkPolyDataNormals* Poly = vtkPolyDataNormals::New();
-	//vtkFileOutputWindow* fileOutputWindow = vtkFileOutputWindow::New();
-	//vtkOutputWindow* OutPutWin = vtkOutputWindow::New();
-	////vtkScalarBarActor *scalarBar;
-	//vtkImageViewer2* viewer2 = vtkImageViewer2::New();
-	//vtkLODActor* LodActor = vtkLODActor::New();
-	//vtkMergePoints* locator = vtkMergePoints::New();
-	//vtkVolume16Reader* p16reader = vtkVolume16Reader::New();
-	//vtkVectorNorm* pVectorNormal = vtkVectorNorm::New();
-	//vtkLODProp3D* prop = vtkLODProp3D::New();
-	//vtkImageShrink3D* render3D = vtkImageShrink3D::New();
-
-	//StruVtkreader = vtkSmartPointer<vtkStructuredPointsReader>::New();
-	//TiffReader = vtkSmartPointer<vtkTIFFReader>::New();
-	//readerP = vtkSmartPointer<vtkParticleReader>::New();
-	//reader = vtkSmartPointer<vtkImageReader>::New();
-	//reader2 = vtkSmartPointer<vtkImageReader2>::New();
-	////	vtkMetaImageReader *readerM;
-	//ployData = vtkSmartPointer<vtkPolyData>::New();
-	//camera = vtkSmartPointer<vtkCamera>::New();
-	//readerImageCast = vtkSmartPointer<vtkImageCast>::New();
-	//ren = vtkSmartPointer<vtkRenderer>::New();
-	//renWin = vtkSmartPointer<vtkWin32OpenGLRenderWindow>::New();
-	//iren = vtkSmartPointer<vtkWin32RenderWindowInteractor>::New();
-	//volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();  //体绘器属性 
-	//surfaceFunction = vtkSmartPointer<vtkVolumeRayCastIsosurfaceFunction>::New();  //等值面绘制函数
-	//compositeFunction = vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New();  // 合成体绘制函数
-	//VolMapper = vtkSmartPointer<vtkVolumeRayCastMapper>::New(); //定义绘制者
-	//SmvoluMapper = vtkSmartPointer<vtkSmartVolumeMapper>::New();
-	//volume = vtkSmartPointer<vtkVolume>::New(); //表示透示图中的一组三维数据
-	//axes = vtkSmartPointer<vtkAxesActor>::New();
-	//widget = vtkSmartPointer<vtkOrientationMarkerWidget>::New();
-	//ploymapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-	////mapper = vtkSmartPointer<vtkMapper>::New();
-	//actor = vtkSmartPointer<vtkActor>::New();
-	//imageActor = vtkSmartPointer<vtkImageActor>::New();
-	//Extract = vtkSmartPointer<vtkContourFilter>::New();
-	//Poly = vtkSmartPointer<vtkPolyDataNormals>::New();
-	//style = vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New();//交互摄像机
-	//strip = vtkSmartPointer<vtkStripper>::New();
-	//opacityTransferFunction = vtkSmartPointer<vtkPiecewiseFunction>::New(); // 一维分段函数转换 
-	//fileOutputWindow = vtkSmartPointer<vtkFileOutputWindow>::New();
-	//OutPutWin = vtkSmartPointer<vtkOutputWindow>::New();
-	////vtkScalarBarActor *scalarBar;
-	//viewer2 = vtkSmartPointer<vtkImageViewer2>::New();
-	//ExtractVOI = vtkSmartPointer<vtkExtractVOI>::New();
-	//MarchCube = vtkSmartPointer<vtkMarchingCubes>::New();
-	//LodActor = vtkSmartPointer<vtkLODActor>::New();
-	//locator = vtkSmartPointer<vtkMergePoints>::New();
-	//p16reader = vtkSmartPointer<vtkVolume16Reader>::New();
-	//pVectorNormal = vtkSmartPointer<vtkVectorNorm>::New();
-	//hiresMapper = vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New();
-	//prop = vtkSmartPointer<vtkLODProp3D>::New();
-	//color = vtkSmartPointer<vtkColorTransferFunction>::New();
-	//gradient = vtkSmartPointer<vtkPiecewiseFunction>::New();
-	//render3D = vtkSmartPointer<vtkImageShrink3D>::New();
-	////vtkinfo = vtkSmartPointer<vtkInformation>::New();
-	//vtkGridReader = vtkSmartPointer<vtkPolyDataReader>::New();
-	//mapperdata = vtkSmartPointer<vtkDataSetMapper>::New();
-	//renWin->StereoCapableWindowOff();
-	//renWin->GlobalWarningDisplayOff();
-	//vtkNew<vtkRenderer> ren;
-	//vtkNew<vtkWin32OpenGLRenderWindow> renWin ;
-
-	//vtkRenderer* ren = vtkRenderer::New();
-	//vtkRenderWindow *renWin = vtkRenderWindow::New();
-	//vtkNew<vtkStructuredPointsReader> StruVtkreader;
-	//vtkNew<vtkCamera> camera;
-	//vtkNew<vtkRenderWindowInteractor> iren;
-	//vtkNew<vtkVolumeProperty> volumeProperty;  //体绘器属性 
-	//vtkNew<vtkVolumeRayCastIsosurfaceFunction> surfaceFunction;  //等值面绘制函数
-	//vtkNew<vtkVolumeRayCastCompositeFunction> compositeFunction;  // 合成体绘制函数
-	//vtkNew<vtkVolume> volume; //表示透示图中的一组三维数据
-	//vtkNew<vtkAxesActor> axes;
-	//vtkNew<vtkOrientationMarkerWidget> widget;
-	//vtkNew<vtkContourFilter> Extract;
-	//vtkNew<vtkInteractorStyleTrackballCamera> style;//交互摄像机
-	//vtkNew<vtkStripper> strip;
-	//vtkNew<vtkPiecewiseFunction> opacityTransferFunction; // 一维分段函数转换 
-	//vtkNew<vtkExtractVOI> ExtractVOI;
-	//vtkNew<vtkMarchingCubes> MarchCube;
-	//vtkNew<vtkDataSetMapper> mapperdata;
-	//vtkNew<vtkColorTransferFunction> color;
-	//vtkNew<vtkPiecewiseFunction> gradient;
-	//vtkNew<vtkVolumeRayCastMapper> VolMapper; //定义绘制者
-
+	
 	vtkSmartPointer<vtkStructuredPointsReader> StruVtkreader = vtkSmartPointer<vtkStructuredPointsReader>::New();
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
 	vtkSmartPointer<vtkRenderer> ren = vtkSmartPointer<vtkRenderer>::New();
@@ -628,33 +508,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	vtkSmartPointer<vtkColorTransferFunction> color = vtkSmartPointer<vtkColorTransferFunction>::New();
 	vtkSmartPointer<vtkPiecewiseFunction> gradient = vtkSmartPointer<vtkPiecewiseFunction>::New();
 	vtkSmartPointer<vtkVolumeRayCastMapper> VolMapper = vtkSmartPointer<vtkVolumeRayCastMapper>::New(); //定义绘制者
-
-	//vtkSmartPointer<vtkTIFFReader> TiffReader = vtkSmartPointer<vtkTIFFReader>::New();
-	//vtkSmartPointer<vtkImageReader> reader = vtkSmartPointer<vtkImageReader>::New();
-	//vtkSmartPointer<vtkImageReader2> reader2 = vtkSmartPointer<vtkImageReader2>::New();
-	//vtkSmartPointer<vtkParticleReader> readerP = vtkSmartPointer<vtkParticleReader>::New();
-	////  vtkMetaImageReader *readerM;
-	//vtkSmartPointer<vtkPolyData> ployData = vtkSmartPointer<vtkPolyData>::New();
-	//vtkSmartPointer<vtkImageCast> readerImageCast = vtkSmartPointer<vtkImageCast>::New();
-	//vtkSmartPointer<vtkSmartVolumeMapper> SmvoluMapper = vtkSmartPointer<vtkSmartVolumeMapper>::New();
-	//vtkSmartPointer<vtkPolyDataMapper> ploymapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-	////mapper = vtkSmartPointer<vtkMapper>::New();
-	//vtkSmartPointer<vtkActor> actor = vtkSmartPointer<vtkActor>::New();
-	//vtkSmartPointer<vtkImageActor> imageActor = vtkSmartPointer<vtkImageActor>::New();
-	//vtkSmartPointer<vtkPolyDataNormals> Poly = vtkSmartPointer<vtkPolyDataNormals>::New();
-	//vtkSmartPointer<vtkFileOutputWindow> fileOutputWindow = vtkSmartPointer<vtkFileOutputWindow>::New();
-	//vtkSmartPointer<vtkOutputWindow> OutPutWin = vtkSmartPointer<vtkOutputWindow>::New();
-	////vtkScalarBarActor *scalarBar;
-	//vtkSmartPointer<vtkImageViewer2> viewer2 = vtkSmartPointer<vtkImageViewer2>::New();
-	//vtkSmartPointer<vtkLODActor> LodActor = vtkSmartPointer<vtkLODActor>::New();
-	//vtkSmartPointer<vtkMergePoints> locator = vtkSmartPointer<vtkMergePoints>::New();
-	//vtkSmartPointer<vtkVolume16Reader> p16reader = vtkSmartPointer<vtkVolume16Reader>::New();
-	//vtkSmartPointer<vtkVectorNorm> pVectorNormal = vtkSmartPointer<vtkVectorNorm>::New();
-	//vtkSmartPointer<vtkGPUVolumeRayCastMapper> hiresMapper = vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New();
-	//vtkSmartPointer<vtkLODProp3D> prop = vtkSmartPointer<vtkLODProp3D>::New();
-	//vtkSmartPointer<vtkImageShrink3D> render3D = vtkSmartPointer<vtkImageShrink3D>::New();
-	////vtkinfo = vtkSmartPointer<vtkInformation>::New();
-	//vtkSmartPointer<vtkPolyDataReader> vtkGridReader = vtkSmartPointer<vtkPolyDataReader>::New();
+	vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
 
 	renWin->StereoCapableWindowOff();
 	renWin->GlobalWarningDisplayOff();
@@ -742,6 +596,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		widget->SetEnabled(true);
 		//widget->InteractiveOff();
 		iren->Initialize();
+		iren->AddObserver(vtkCommand::KeyPressEvent,client);
 		iren->Start();   //初始化并进行交互绘制
 		ren->ResetCameraClippingRange();
 		recorder->SetInteractor(iren.GetPointer());   //生成渲染日志 
