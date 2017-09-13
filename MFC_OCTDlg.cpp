@@ -516,6 +516,8 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper = vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New(); 
 
 	vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
+	vtkSmartPointer<vtkPolyDataConnectivityFilter> confilter =vtkSmartPointer<vtkPolyDataConnectivityFilter>::New();
+
 	//vtkNew<vtkImagData> transferFunc; 
 
 	renWin->StereoCapableWindowOff();
@@ -543,6 +545,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 			distance = spacing[2];
 		}
 		distance = distance / 2.0;
+
 		VolMapper->SetSampleDistance(static_cast<float>(distance));
 		VolMapper->SetBlendModeToComposite();
 		VolMapper->SetInputConnection(StruVtkreader->GetOutputPort());
@@ -559,13 +562,13 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		double opacityWindow = 240;
 		//灰度值与不透明度  为零则是全透明 为1 则为完全不透明 
 		//opacityTransferFunction->AddSegment(-69, 0, 89, 1);
-		opacityTransferFunction->AddPoint(scalarRange[0], 0);
-		opacityTransferFunction->AddPoint(scalarRange[1], 1);
+		opacityTransferFunction->AddPoint(scalarRange[0], -2);
+		opacityTransferFunction->AddPoint(scalarRange[1], 2);
 		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
 
 		color->RemoveAllPoints();
 		color->AddRGBPoint(scalarRange[0], 0, 0, 0);
-		color->AddRGBPoint(scalarRange[1], 1.0, 1, 1);
+		color->AddRGBPoint(scalarRange[1], 1.0, 1.0, 1.0);
 
 		volumeProperty->SetColor(color.GetPointer());
 		//volumeProperty->SetTransferMode(vtkVolumeProperty::TF_1D);
@@ -622,7 +625,6 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		flag3D = !flag3D;
 		GetDlgItem(IDC_BUTTON_3D)->SetWindowTextW(_T("OCT3D"));
 
-	
 	}
 }
 

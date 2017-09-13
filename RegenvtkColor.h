@@ -133,6 +133,7 @@
 #include "vtkColorTransferFunction.h"
 #include "vtkGPUVolumeRayCastMapper.h"
 #include "vtkImageData.h"
+#include "vtkPolyDataConnectivityFilter.h"
 
 //void* mutex;
 //void* handler_thread = 0;
