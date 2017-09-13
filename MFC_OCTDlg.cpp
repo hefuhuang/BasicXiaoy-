@@ -256,6 +256,11 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	SetWindowText(_T("regenovo"));
 
 	GetClientRect(m_TotalRect);
+	namedWindow("OCTShow", CV_WINDOW_AUTOSIZE);
+	HWND hWnd = (HWND)cvGetWindowHandle("OCTShow");
+	HWND hParent = ::GetParent(hWnd);
+	::SetParent(hWnd, GetDlgItem(IDC_STATIC_Vedio)->m_hWnd);
+	::ShowWindow(hParent, SW_HIDE);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -472,9 +477,10 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 	switch (Model3dStyle)
 	{
 	case 0:
-		Model3Dstyle2();
+		Model3Dstyledefault();
 		break; 
-	case 2: Model3Dstyle1();
+	case 2: 
+		Model3Dstyle1();
 		break;
 	default:
 		Model3Dstyledefault();
@@ -486,8 +492,7 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 void CMFC_OCTDlg::Model3Dstyledefault()
 {
 	vtkObject::GlobalWarningDisplayOff();
-	
-	vtkSmartPointer<vtkStructuredPointsReader> StruVtkreader = vtkSmartPointer<vtkStructuredPointsReader>::New();
+	vtkSmartPointer<vtkGenericDataObjectReader> StruVtkreader = vtkSmartPointer<vtkGenericDataObjectReader>::New();
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
 	vtkSmartPointer<vtkRenderer> ren = vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkWin32OpenGLRenderWindow> renWin = vtkSmartPointer<vtkWin32OpenGLRenderWindow>::New();
@@ -507,8 +512,11 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	vtkSmartPointer<vtkDataSetMapper> mapperdata = vtkSmartPointer<vtkDataSetMapper>::New();
 	vtkSmartPointer<vtkColorTransferFunction> color = vtkSmartPointer<vtkColorTransferFunction>::New();
 	vtkSmartPointer<vtkPiecewiseFunction> gradient = vtkSmartPointer<vtkPiecewiseFunction>::New();
-	vtkSmartPointer<vtkVolumeRayCastMapper> VolMapper = vtkSmartPointer<vtkVolumeRayCastMapper>::New(); //定义绘制者
+
+	vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper = vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New(); 
+
 	vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
+	//vtkNew<vtkImagData> transferFunc; 
 
 	renWin->StereoCapableWindowOff();
 	renWin->GlobalWarningDisplayOff();
@@ -560,6 +568,9 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		color->AddRGBPoint(scalarRange[1], 1.0, 1, 1);
 
 		volumeProperty->SetColor(color.GetPointer());
+		//volumeProperty->SetTransferMode(vtkVolumeProperty::TF_1D);
+		//volumeProperty->SetTransferMode(vtkVolumeProperty::TF_2D);
+
 		volume->SetMapper(VolMapper.GetPointer());
 		volume->SetProperty(volumeProperty.GetPointer());
 
@@ -604,43 +615,14 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		recorder->On();
 		recorder->Record();
 		return ;
+	    
 	}
 	else{
 
 		flag3D = !flag3D;
 		GetDlgItem(IDC_BUTTON_3D)->SetWindowTextW(_T("OCT3D"));
-		// 释放vtk空间 
-		StruVtkreader->FastDelete();
-		//StruVtkreader->Delete();
-		volumeProperty->Delete();
-		opacityTransferFunction->Delete();
-		color->Delete();
-		VolMapper->RemoveAllInputConnections(0);
-		VolMapper->Delete();
-		camera->FastDelete();
-		ExtractVOI->Delete();
-		axes->Delete();
-		widget->Delete();
-		volume->Delete();
-		ren->RemoveVolume(volume.GetPointer());
-		ren->Clear();
-		ren->FastDelete();
-		renWin->RemoveRenderer(ren);
-		renWin->Delete();
-		iren->RemoveAllObservers();
-		iren->Delete();
-		mapperdata->Delete();
-		gradient->Delete();
-		surfaceFunction->Delete();
-		style->Delete();
-		strip->Delete();
-		Extract->Delete();
-		MarchCube->Delete();
-		iren->SetRenderWindow(NULL);
-		//recorder->Off();
-		recorder->Delete();
-		UpdateData(true);
-		RedrawWindow();
+
+	
 	}
 }
 
@@ -1573,6 +1555,8 @@ void KeyPressCallbackFunction(vtkObject* caller, long unsigned int eventId, void
 
 void CMFC_OCTDlg::OnBnClickedButtonStart()
 {
+	TRACE(" __________微软基础库输出 ____________");
+
 	if (true == flag)
 	{
 		flag = !flag;
@@ -1607,6 +1591,7 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 		proRect.bottom = rect.bottom - rect.Height() / 2 + 20;
 		myProCtrl.Create(WS_VISIBLE, proRect, this, 99); //创建位置、大小
 		myProCtrl.SetRange(0, 100);
+
 		for (int i = 0; i < 100; i++)
 		{
 			myProCtrl.OffsetPos(1);

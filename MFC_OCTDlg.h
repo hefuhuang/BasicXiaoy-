@@ -22,7 +22,6 @@
 #include "CvImgCtrl.h"
 #include "AddSheet.h"
 #include "OpencvShowVedio.h"
-#include "vtkMFCWindow.h"
 #include "OCTProgressBar.h"
 
 //#include "SysReadAndWrite.h"

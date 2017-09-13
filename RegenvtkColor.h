@@ -130,6 +130,10 @@
 #include "vtkVectorNorm.h"
 #include "vtkFixedPointVolumeRayCastMapper.h"
 #include "vtkInteractorEventRecorder.h" 
+#include "vtkColorTransferFunction.h"
+#include "vtkGPUVolumeRayCastMapper.h"
+#include "vtkImageData.h"
+
 //void* mutex;
 //void* handler_thread = 0;
 

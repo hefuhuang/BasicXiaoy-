@@ -1,7 +1,7 @@
-﻿生成启动时间为 2017/9/11 9:14:03。
+﻿生成启动时间为 2017/9/13 13:38:05。
      1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /I..\lib /Zi /nologo /W3 /WX- /sdl /O2 /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _WINDOWS /D _DEBUG /D "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)" /D "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)" /D "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)" /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt MFC_OCTDlg.cpp vtkClientServerInterpreterInternals.cpp
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /I..\lib /Zi /nologo /W3 /WX- /sdl /O2 /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _WINDOWS /D _DEBUG /D "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)" /D "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)" /D "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)" /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt MFC_OCTDlg.cpp
          MFC_OCTDlg.cpp
      1>C:\Users\HHF\Desktop\MFC_OCT\GUISupport\MFC\vtkMFCWindow.h(29): warning C4275: 非 dll 接口 class“CWnd”用作 dll 接口 class“vtkMFCWindow”的基
                  E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
@@ -10,8 +10,6 @@
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/imgproc.hpp(592): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-         vtkClientServerInterpreterInternals.cpp
-         正在生成代码...
      1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”(1)正在节点 2 上生成“C:\Users\HHF\Desktop\MFC_OCT\SysReadAndWrite\SysReadAndWrite.vcxproj”(2:3) (GetResolvedLinkLibs 个目标)。
      2>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(357,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
      2>已完成生成项目“C:\Users\HHF\Desktop\MFC_OCT\SysReadAndWrite\SysReadAndWrite.vcxproj”(GetResolvedLinkLibs 个目标)的操作。
@@ -38,4 +36,4 @@
 
 生成成功。
 
-已用时间 00:00:30.59
+已用时间 00:00:23.22
