@@ -491,6 +491,9 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 
 void CMFC_OCTDlg::Model3Dstyledefault()
 {
+	
+	//SysLog.InitLog(_T("../sys/systemConfig.txt"));
+
 	vtkObject::GlobalWarningDisplayOff();
 	vtkSmartPointer<vtkGenericDataObjectReader> StruVtkreader = vtkSmartPointer<vtkGenericDataObjectReader>::New();
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
@@ -514,7 +517,6 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	vtkSmartPointer<vtkPiecewiseFunction> gradient = vtkSmartPointer<vtkPiecewiseFunction>::New();
 
 	vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper = vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New(); 
-
 	vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
 	vtkSmartPointer<vtkPolyDataConnectivityFilter> confilter =vtkSmartPointer<vtkPolyDataConnectivityFilter>::New();
 
@@ -584,12 +586,8 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		ren->SetActiveCamera(camera.GetPointer());
 		ren->SetBackground(1, 1, 1);
 		ren->ResetCamera();
-		if (nullptr != renWin)
-		{
-			renWin->RemoveRenderer(ren);
-		}
-		renWin->AddRenderer(ren);
-		//iren->CreateRepeatingTimer();
+
+	    renWin->AddRenderer(ren);
 		iren->SetInteractorStyle(style.GetPointer());
 		iren->SetRenderWindow(renWin);
 		CRect rect;
@@ -602,7 +600,6 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		axes->SetXAxisLabelText("X");
 		axes->SetYAxisLabelText("Y");
 		axes->SetZAxisLabelText("Z");
-		//widget = vtkOrientationMarkerWidget::New();
 		widget->SetOutlineColor(0.9300, 0.5700, 0.1300);
 		widget->SetOrientationMarker(axes.GetPointer());
 		widget->SetInteractor(iren.GetPointer());
@@ -610,7 +607,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		widget->SetEnabled(true);
 		//widget->InteractiveOff();
 		iren->Initialize();
-		iren->AddObserver(vtkCommand::KeyPressEvent,client);
+		iren->AddObserver(vtkCommand::LeftButtonPressEvent,client);
 		iren->Start();   //初始化并进行交互绘制
 		ren->ResetCameraClippingRange();
 		recorder->SetInteractor(iren.GetPointer());   //生成渲染日志 
@@ -1610,7 +1607,7 @@ void CMFC_OCTDlg::OnBnClickedButtonStart()
 	}
 	else{
 		flag = !flag;
-		GetDlgItem(IDC_BUTTON_Start)->SetWindowTextW(_T("START"));
+		this->GetDlgItem(IDC_BUTTON_Start)->SetWindowTextW(_T("START"));
 	
 		UpdateData(true);
 		RedrawWindow();

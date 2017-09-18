@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "vtkClientServerInterpreterInternals.h"
 
+extern bool flag3D;
 
 vtkClientServerInterpreterInternals* vtkClientServerInterpreterInternals::New()
 {
@@ -40,7 +41,8 @@ void vtkClientServerInterpreterInternals::Execute(vtkObject* caller,unsigned lon
 		++this->TimerCount;
 		break;
 	}
-	case vtkCommand::KeyPressEvent:
+	case vtkCommand::LeftButtonPressEvent:
+	{   if (flag3D)
 	{
 		iren = static_cast<vtkRenderWindowInteractor*>(caller);
 		iren->GetRenderWindow()->Render();
@@ -50,11 +52,14 @@ void vtkClientServerInterpreterInternals::Execute(vtkObject* caller,unsigned lon
 		iren->TerminateApp();
 		break;
 	}
+	else
+		break;
+	}
 	case  vtkCommand::InteractionEvent:
 	{
 		break;
 	}
-	case  vtkCommand::LeftButtonPressEvent:
+	case  vtkCommand::KeyPressEvent:
 	{
 		iren = static_cast<vtkRenderWindowInteractor*>(caller);
 		iren->GetRenderWindow()->Render();

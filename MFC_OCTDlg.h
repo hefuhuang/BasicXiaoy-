@@ -11,16 +11,18 @@
 #include <vtkCallbackCommand.h>
 #include <vtkAutoInit.h> 
 
-#include "vtkMFCWindow.h"
-#include "RegenvtkColor.h"
-#include "vtkClientServerInterpreterInternals.h"
-
 #include "UIthread.h"
 #include "afxwin.h"  
 #include "glaux.h"
 #include "vtktiff/libtiff/tiff.h" 
 #include "CvImgCtrl.h"
 #include "AddSheet.h"
+
+#include "vtkMFCWindow.h"
+#include "RegenvtkColor.h"
+#include "SysReadAndWrite.h"
+
+#include "vtkClientServerInterpreterInternals.h"
 #include "OpencvShowVedio.h"
 #include "OCTProgressBar.h"
 
@@ -56,6 +58,7 @@ public:
 	// 对话框数据
 	enum { IDD = IDD_MFC_OCT_DIALOG };
 
+//	SysReadAndWrite  SysLog;
 
 public:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持

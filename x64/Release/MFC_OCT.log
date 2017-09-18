@@ -1,20 +1,67 @@
-﻿生成启动时间为 2017/8/29 11:48:05。
+﻿生成启动时间为 2017/9/15 13:37:29。
      1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W1 /WX- /O2 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt /D "_AFXDLL" MFC_OCT.cpp MFC_OCTDlg.cpp RegenvtkColor.cpp UIthread.cpp vtkClientServerInterpreterInternals.cpp
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W1 /WX- /O2 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt /D "_AFXDLL" AddSheet.cpp C2dParamSeting.cpp C3DParaSeting.cpp Dlg3DParam.cpp DlgParam.cpp MFC_OCT.cpp MFC_OCTDlg.cpp OCTProgressBar.cpp OpencvShowVedio.cpp RegenvtkColor.cpp SeconedInterface.cpp stdafx.cpp UIthread.cpp vtkClientServerInterpreterInternals.cpp vtkClientServerStream.cpp
+         AddSheet.cpp
+         C2dParamSeting.cpp
+         C3DParaSeting.cpp
+         Dlg3DParam.cpp
+         DlgParam.cpp
          MFC_OCT.cpp
-     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\MFC_OCTDlg.h(9): fatal error C1083: 无法打开包括文件: “vtkMultiThreader.h”: No such file or directory
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/mat.hpp(2586): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/imgproc.hpp(592): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\CvImgCtrl.h(283): error C2440: “初始化”: 无法从“CRuntimeClass *”转换为“CRuntimeClass *(__cdecl *)(void)”
+                 没有使该转换得以执行的上下文
          MFC_OCTDlg.cpp
-     1>MFC_OCTDlg.cpp(23): fatal error C1083: 无法打开包括文件: “vtkTIFFReader.h”: No such file or directory
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/mat.hpp(2586): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/imgproc.hpp(592): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\CvImgCtrl.h(283): error C2440: “初始化”: 无法从“CRuntimeClass *”转换为“CRuntimeClass *(__cdecl *)(void)”
+                 没有使该转换得以执行的上下文
+     1>MFC_OCTDlg.cpp(332): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(345): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(532): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(623): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(659): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(757): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(817): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(917): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(1562): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(1610): error C2039: “SetWindowTextW”: 不是“CWnd”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
+     1>MFC_OCTDlg.cpp(1639): error C2039: “PostMessageW”: 不是“CMFC_OCTDlg”的成员
+                 c:\users\hhf\desktop\mfc_oct\mfc_oct\MFC_OCTDlg.h(51) : 参见“CMFC_OCTDlg”的声明
+     1>MFC_OCTDlg.cpp(2180): error C2039: “TextOutW”: 不是“CDC”的成员
+                 E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(559) : 参见“CDC”的声明
+         OCTProgressBar.cpp
+         OpencvShowVedio.cpp
          RegenvtkColor.cpp
-     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\RegenvtkColor.h(3): fatal error C1083: 无法打开包括文件: “vtkVersion.h”: No such file or directory
+         SeconedInterface.cpp
+         stdafx.cpp
          UIthread.cpp
-     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\MFC_OCTDlg.h(9): fatal error C1083: 无法打开包括文件: “vtkMultiThreader.h”: No such file or directory
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/mat.hpp(2586): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/imgproc.hpp(592): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\CvImgCtrl.h(283): error C2440: “初始化”: 无法从“CRuntimeClass *”转换为“CRuntimeClass *(__cdecl *)(void)”
+                 没有使该转换得以执行的上下文
          vtkClientServerInterpreterInternals.cpp
-     1>c:\users\hhf\desktop\mfc_oct\mfc_oct\vtkClientServerInterpreterInternals.h(5): fatal error C1083: 无法打开包括文件: “vtkColorTransferFunction.h”: No such file or directory
+         vtkClientServerStream.cpp
          正在生成代码...
      1>已完成生成项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”(Build 个目标)的操作 - 失败。
 
 生成失败。
 
-已用时间 00:00:08.88
+已用时间 00:00:30.11
