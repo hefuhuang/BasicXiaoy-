@@ -55,10 +55,6 @@ void vtkClientServerInterpreterInternals::Execute(vtkObject* caller,unsigned lon
 	else
 		break;
 	}
-	case  vtkCommand::InteractionEvent:
-	{
-		break;
-	}
 	case  vtkCommand::KeyPressEvent:
 	{
 		iren = static_cast<vtkRenderWindowInteractor*>(caller);
@@ -69,6 +65,15 @@ void vtkClientServerInterpreterInternals::Execute(vtkObject* caller,unsigned lon
 		iren->TerminateApp();
 		break;
 	}
+	case vtkCommand::StartInteractionEvent:
+		TRACE(_T("StartInteractionEvent"));
+		break;
+	case vtkCommand::EndInteractionEvent:
+		TRACE(_T("EndInteractionEvent" ));
+		break;
+	case vtkCommand::InteractionEvent:
+	   TRACE(_T("InteractionEvent" ));
+		break;
 
 	default:
 		break;

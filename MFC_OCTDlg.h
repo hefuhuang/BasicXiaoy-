@@ -9,6 +9,7 @@
 #include <afxinet.h>
 #include <vtkMultiThreader.h>
 #include <vtkCallbackCommand.h>
+#include <vtkStructuredGridReader.h>
 #include <vtkAutoInit.h> 
 
 #include "UIthread.h"

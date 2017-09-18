@@ -495,7 +495,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	//SysLog.InitLog(_T("../sys/systemConfig.txt"));
 
 	vtkObject::GlobalWarningDisplayOff();
-	vtkSmartPointer<vtkGenericDataObjectReader> StruVtkreader = vtkSmartPointer<vtkGenericDataObjectReader>::New();
+	vtkSmartPointer<vtkStructuredPointsReader> StruVtkreader = vtkSmartPointer<vtkStructuredPointsReader>::New();
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
 	vtkSmartPointer<vtkRenderer> ren = vtkSmartPointer<vtkRenderer>::New();
 	vtkSmartPointer<vtkWin32OpenGLRenderWindow> renWin = vtkSmartPointer<vtkWin32OpenGLRenderWindow>::New();
@@ -564,12 +564,12 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		double opacityWindow = 240;
 		//灰度值与不透明度  为零则是全透明 为1 则为完全不透明 
 		//opacityTransferFunction->AddSegment(-69, 0, 89, 1);
-		opacityTransferFunction->AddPoint(scalarRange[0], -2);
-		opacityTransferFunction->AddPoint(scalarRange[1], 2);
+		opacityTransferFunction->AddPoint(scalarRange[0], -1);
+		opacityTransferFunction->AddPoint(scalarRange[1], 0.8);
 		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
 
 		color->RemoveAllPoints();
-		color->AddRGBPoint(scalarRange[0], 0, 0, 0);
+		color->AddRGBPoint(scalarRange[0], -1, -1, -1);
 		color->AddRGBPoint(scalarRange[1], 1.0, 1.0, 1.0);
 
 		volumeProperty->SetColor(color.GetPointer());
