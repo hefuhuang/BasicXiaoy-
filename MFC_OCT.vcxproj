@@ -68,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>C:\Program Files\VTK\include\vtk-8.1;..\IO\Image;C:\Program Files\VTK\lib;..\opencv\lib;C:\Users\HHF\Desktop\Project\MFC_OCT\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>..\SysReadAndWrite;$(ReferencePath)</ReferencePath>
-    <IncludePath>..\SysReadAndWrite;..\include;..\opencv\include;..\opencv\sources\modules\core\src;..\opencv;C:\Program Files\VTK\include\vtk-8.1;..\tiff\source;..\tiff\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\BCGControlBar\BCGSuiteEvaluation\BCGSuite;E:\BCGControlBar\install\BCGCBPro;..\SysReadAndWrite;..\include;..\opencv\include;..\opencv\sources\modules\core\src;..\opencv;C:\Program Files\VTK\include\vtk-8.1;..\tiff\source;..\tiff\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ReferencePath>..\opencv\build\include;..\opencv\sources\include\opencv2;..\vtk;..\opencv\opencv2;..\opencv\sources;..\opencv\include;C:\Program Files\VTK\include;$(ReferencePath)</ReferencePath>
@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>vtkFiltersGeometry-8.1.lib;vtkIOLegacy-8.1.lib;vtkRenderingLOD-8.1.lib;vtkCommonDataModel-8.1.lib;vtkFiltersCore-8.1.lib;vtkRenderingVolume-8.1.lib;vtkImagingHybrid-8.1.lib;vtkFiltersModeling-8.1.lib;vtkIOXML-8.1.lib;vtkIOXMLParser-8.1.lib;vtkFiltersFlowPaths-8.1.lib;opencv_world320.lib;opencv_world320d.lib;vtkRenderingCore-8.1.lib;vtkInteractionStyle-8.1.lib;vtkFiltersSources-8.1.lib;vtkCommonCore-8.1.lib;vtkCommonExecutionModel-8.1.lib;vtkRenderingVolumeOpenGL2-8.1.lib;vtkRenderingOpenGL2-8.1.lib;vtkInteractionImage-8.1.lib;vtkRenderingAnnotation-8.1.lib;vtkViewsCore-8.1.lib;vtkRenderingImage-8.1.lib;vtkImagingCore-8.1.lib;vtkIOImage-8.1.lib;vtkInteractionWidgets-8.1.lib;vtkGeovisCore-8.1.lib;vtkIOGeometry-8.1.lib;vtkFiltersGeneral-8.1.lib;SpectralRadar.lib;opengl32.lib;glut32.lib;glu32.lib;glaux.lib;port.lib;tiff.lib;tiffd.lib;portd.lib;DelayImp.lib;vtkCommonTransforms-8.1.lib;vtkCommonMisc-8.1.lib;vtkCommonMath-8.1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;vtktiff-8.1.lib;vtkRenderingFreeType-8.1.lib;vtkFiltersGeneric-8.1.lib;uafxcwd.lib;Libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GLU32.LIB;GLAUX.LIB;glu.lib;vtkGUISupportMFC-8.1.lib;vtkFiltersGeometry-8.1.lib;vtkIOLegacy-8.1.lib;vtkRenderingLOD-8.1.lib;vtkCommonDataModel-8.1.lib;vtkFiltersCore-8.1.lib;vtkRenderingVolume-8.1.lib;vtkImagingHybrid-8.1.lib;vtkFiltersModeling-8.1.lib;vtkIOXML-8.1.lib;vtkIOXMLParser-8.1.lib;vtkFiltersFlowPaths-8.1.lib;opencv_world320.lib;opencv_world320d.lib;vtkRenderingCore-8.1.lib;vtkInteractionStyle-8.1.lib;vtkFiltersSources-8.1.lib;vtkCommonCore-8.1.lib;vtkCommonExecutionModel-8.1.lib;vtkRenderingVolumeOpenGL2-8.1.lib;vtkRenderingOpenGL2-8.1.lib;vtkInteractionImage-8.1.lib;vtkRenderingAnnotation-8.1.lib;vtkViewsCore-8.1.lib;vtkRenderingImage-8.1.lib;vtkImagingCore-8.1.lib;vtkIOImage-8.1.lib;vtkInteractionWidgets-8.1.lib;vtkGeovisCore-8.1.lib;vtkIOGeometry-8.1.lib;vtkFiltersGeneral-8.1.lib;SpectralRadar.lib;opengl32.lib;glut32.lib;glu32.lib;glaux.lib;port.lib;tiff.lib;tiffd.lib;portd.lib;DelayImp.lib;vtkCommonTransforms-8.1.lib;vtkCommonMisc-8.1.lib;vtkCommonMath-8.1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;vtktiff-8.1.lib;vtkRenderingFreeType-8.1.lib;vtkFiltersGeneric-8.1.lib;uafxcwd.lib;Libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Program Files\VTK\lib;..\opencv\lib;..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>SysReadAndWrite.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <PreventDllBinding>
@@ -162,12 +162,17 @@
   <ItemGroup>
     <ClInclude Include="..\Global\GlobalParameter.h" />
     <ClInclude Include="..\GUISupport\MFC\vtkGUISupportMFCModule.h" />
+    <ClInclude Include="..\include\vtkGUISupportMFCModule.h" />
+    <ClInclude Include="..\include\vtkMFCConfigure.h" />
+    <ClInclude Include="..\include\vtkMFCWindow.h" />
     <ClInclude Include="AddSheet.h" />
+    <ClInclude Include="BCGHeader.h" />
     <ClInclude Include="C2dParamSeting.h" />
     <ClInclude Include="C3DParaSeting.h" />
     <ClInclude Include="CvImgCtrl.h" />
     <ClInclude Include="Dlg3DParam.h" />
     <ClInclude Include="DlgParam.h" />
+    <ClInclude Include="MFCVtkWindow.h" />
     <ClInclude Include="MFC_OCT.h" />
     <ClInclude Include="MFC_OCTDlg.h" />
     <ClInclude Include="OCTProgressBar.h" />
@@ -189,6 +194,7 @@
     <ClCompile Include="C3DParaSeting.cpp" />
     <ClCompile Include="Dlg3DParam.cpp" />
     <ClCompile Include="DlgParam.cpp" />
+    <ClCompile Include="MFCVtkWindow.cpp" />
     <ClCompile Include="MFC_OCT.cpp" />
     <ClCompile Include="MFC_OCTDlg.cpp" />
     <ClCompile Include="OCTProgressBar.cpp" />

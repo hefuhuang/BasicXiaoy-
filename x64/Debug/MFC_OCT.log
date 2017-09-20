@@ -1,4 +1,4 @@
-﻿生成启动时间为 2017/9/18 15:03:36。
+﻿生成启动时间为 2017/9/20 17:07:43。
      1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /I..\lib /Zi /nologo /W3 /WX- /sdl /O2 /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _WINDOWS /D _DEBUG /D "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)" /D "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)" /D "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)" /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt MFC_OCTDlg.cpp
@@ -7,19 +7,20 @@
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/imgproc.hpp(592): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-     1>C:\Users\HHF\Desktop\MFC_OCT\include\vtkMFCWindow.h(29): warning C4275: 非 dll 接口 class“CWnd”用作 dll 接口 class“vtkMFCWindow”的基
+     1>C:\Users\HHF\Desktop\MFC_OCT\include\vtkMFCWindow.h(30): warning C4275: 非 dll 接口 class“CWnd”用作 dll 接口 class“vtkMfc::vtkMFCWindow”的基
                  E:\visiual stdio 2013\install\VC\atlmfc\include\afxwin.h(2165) : 参见“CWnd”的声明
-                 C:\Users\HHF\Desktop\MFC_OCT\include\vtkMFCWindow.h(28) : 参见“vtkMFCWindow”的声明
+                 C:\Users\HHF\Desktop\MFC_OCT\include\vtkMFCWindow.h(29) : 参见“vtkMfc::vtkMFCWindow”的声明
      1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”(1)正在节点 2 上生成“C:\Users\HHF\Desktop\MFC_OCT\SysReadAndWrite\SysReadAndWrite.vcxproj”(2:3) (GetResolvedLinkLibs 个目标)。
      2>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(357,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
      2>已完成生成项目“C:\Users\HHF\Desktop\MFC_OCT\SysReadAndWrite\SysReadAndWrite.vcxproj”(GetResolvedLinkLibs 个目标)的操作。
      1>Link:
-         E:\visiual stdio 2013\install\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe" /NOLOGO /LIBPATH:"C:\Program Files\VTK\lib" /LIBPATH:..\opencv\lib /LIBPATH:..\lib "vtkFiltersGeometry-8.1.lib" "vtkIOLegacy-8.1.lib" "vtkRenderingLOD-8.1.lib" "vtkCommonDataModel-8.1.lib" "vtkFiltersCore-8.1.lib" "vtkRenderingVolume-8.1.lib" "vtkImagingHybrid-8.1.lib" "vtkFiltersModeling-8.1.lib" "vtkIOXML-8.1.lib" "vtkIOXMLParser-8.1.lib" "vtkFiltersFlowPaths-8.1.lib" opencv_world320.lib opencv_world320d.lib "vtkRenderingCore-8.1.lib" "vtkInteractionStyle-8.1.lib" "vtkFiltersSources-8.1.lib" "vtkCommonCore-8.1.lib" "vtkCommonExecutionModel-8.1.lib" "vtkRenderingVolumeOpenGL2-8.1.lib" "vtkRenderingOpenGL2-8.1.lib" "vtkInteractionImage-8.1.lib" "vtkRenderingAnnotation-8.1.lib" "vtkViewsCore-8.1.lib" "vtkRenderingImage-8.1.lib" "vtkImagingCore-8.1.lib" "vtkIOImage-8.1.lib" "vtkInteractionWidgets-8.1.lib" "vtkGeovisCore-8.1.lib" "vtkIOGeometry-8.1.lib" "vtkFiltersGeneral-8.1.lib" SpectralRadar.lib opengl32.lib glut32.lib glu32.lib glaux.lib port.lib tiff.lib tiffd.lib portd.lib DelayImp.lib "vtkCommonTransforms-8.1.lib" "vtkCommonMisc-8.1.lib" "vtkCommonMath-8.1.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "vtktiff-8.1.lib" "vtkRenderingFreeType-8.1.lib" "vtkFiltersGeneric-8.1.lib" uafxcwd.lib Libcmtd.lib /NODEFAULTLIB:SysReadAndWrite.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"E:\visiual stdio 2013\install\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.pdb" /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.lib" /MACHINE:X64 x64\Debug\MFC_OCT.res
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe" /NOLOGO /LIBPATH:"C:\Program Files\VTK\lib" /LIBPATH:..\opencv\lib /LIBPATH:..\lib GLU32.LIB GLAUX.LIB glu.lib "vtkGUISupportMFC-8.1.lib" "vtkFiltersGeometry-8.1.lib" "vtkIOLegacy-8.1.lib" "vtkRenderingLOD-8.1.lib" "vtkCommonDataModel-8.1.lib" "vtkFiltersCore-8.1.lib" "vtkRenderingVolume-8.1.lib" "vtkImagingHybrid-8.1.lib" "vtkFiltersModeling-8.1.lib" "vtkIOXML-8.1.lib" "vtkIOXMLParser-8.1.lib" "vtkFiltersFlowPaths-8.1.lib" opencv_world320.lib opencv_world320d.lib "vtkRenderingCore-8.1.lib" "vtkInteractionStyle-8.1.lib" "vtkFiltersSources-8.1.lib" "vtkCommonCore-8.1.lib" "vtkCommonExecutionModel-8.1.lib" "vtkRenderingVolumeOpenGL2-8.1.lib" "vtkRenderingOpenGL2-8.1.lib" "vtkInteractionImage-8.1.lib" "vtkRenderingAnnotation-8.1.lib" "vtkViewsCore-8.1.lib" "vtkRenderingImage-8.1.lib" "vtkImagingCore-8.1.lib" "vtkIOImage-8.1.lib" "vtkInteractionWidgets-8.1.lib" "vtkGeovisCore-8.1.lib" "vtkIOGeometry-8.1.lib" "vtkFiltersGeneral-8.1.lib" SpectralRadar.lib opengl32.lib glut32.lib glu32.lib glaux.lib port.lib tiff.lib tiffd.lib portd.lib DelayImp.lib "vtkCommonTransforms-8.1.lib" "vtkCommonMisc-8.1.lib" "vtkCommonMath-8.1.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "vtktiff-8.1.lib" "vtkRenderingFreeType-8.1.lib" "vtkFiltersGeneric-8.1.lib" uafxcwd.lib Libcmtd.lib /NODEFAULTLIB:SysReadAndWrite.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"E:\visiual stdio 2013\install\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.pdb" /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.lib" /MACHINE:X64 x64\Debug\MFC_OCT.res
          x64\Debug\AddSheet.obj
          x64\Debug\C2dParamSeting.obj
          x64\Debug\C3DParaSeting.obj
          x64\Debug\Dlg3DParam.obj
          x64\Debug\DlgParam.obj
+         x64\Debug\MFCVtkWindow.obj
          x64\Debug\MFC_OCT.obj
          x64\Debug\MFC_OCTDlg.obj
          x64\Debug\OCTProgressBar.obj
@@ -36,4 +37,4 @@
 
 生成成功。
 
-已用时间 00:00:06.71
+已用时间 00:00:18.14

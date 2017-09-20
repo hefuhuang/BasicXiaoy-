@@ -13,6 +13,8 @@ IMPLEMENT_DYNAMIC(SeconedInterface, CDialogEx)
 
 SeconedInterface::SeconedInterface(CWnd* pParent /*=NULL*/)
 	: CDialogEx(SeconedInterface::IDD, pParent)
+	, vtkMfcWindow(0)
+	, MfcVtkWindow(0)
 {
 
 	EnableAutomation();

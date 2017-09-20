@@ -261,6 +261,8 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	HWND hParent = ::GetParent(hWnd);
 	::SetParent(hWnd, GetDlgItem(IDC_STATIC_Vedio)->m_hWnd);
 	::ShowWindow(hParent, SW_HIDE);
+	//glClearColor(1.0f, 1.0f, 1.0f,1.0);
+
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -303,14 +305,44 @@ void CMFC_OCTDlg::OnPaint()
 	}
 	else
 	{
-		CRect rect;
-		CPaintDC dc(this);
-		m_Picture.GetClientRect(rect);
-		dc.FillSolidRect(rect, RGB(1, 1, 1));     //设置为黑色背景  
+		//CRect rect;
+		//CPaintDC dc(this);
+		//m_Picture.GetClientRect(rect);
+		//dc.FillSolidRect(rect, RGB(1, 1, 1));     //设置为黑色背景  
 
-		CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
-		CDC *pDC = this->GetDC();
-		this->DrawLine(pDC);
+		//CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
+		//CDC *pDC = this->GetDC();
+		//this->DrawLine(pDC);
+
+		CPaintDC    dc(this);
+		CRect rect;
+		CDC *pDC = &dc;
+		CDC memDC;
+		m_Picture.GetClientRect(&rect);
+		CBitmap memBitmap;
+		memDC.CreateCompatibleDC(NULL);
+		memBitmap.CreateCompatibleBitmap(pDC, rect.Width(), rect.Height());
+		memDC.SetBkMode(TRANSPARENT);
+		memDC.SelectObject(&memBitmap);
+		COLORREF bkColor = ::GetSysColor(COLOR_3DFACE);//得到系统颜色    
+		memDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), bkColor);//绘制背景    
+		memDC.FillSolidRect(rect.left, rect.bottom - 40, rect.Width(), rect.Height(), RGB(80, 80, 80));
+		
+		int r1 = 147, g1 = 198, b1 = 198;
+		int r2 = 25, g2 = 56, b2 = 56;
+		for (int i = 0; i < rect.Width(); i++){
+		int r, g, b;
+		r = r1 + (i * (r2 - r1) / rect.Width());
+		g = g1 + (i * (g2 - g1) / rect.Width());
+		b = b1 + (i * (b2 - b1) / rect.Width());
+		memDC.FillSolidRect(i, 0, 1, rect.Height(), RGB(r, g, b));
+		}
+
+		pDC->BitBlt(rect.left, rect.top, rect.Width(), rect.Height(), &memDC, 0, 0, SRCCOPY);
+		ReleaseDC(pDC);
+
+
+
 		////////////////////
 		CDialogEx::OnPaint();
 	}
@@ -474,6 +506,8 @@ void on_mouse(int event, int x, int y, int flags, void* ustc)   //opencv鼠标�
 void CMFC_OCTDlg::OnBnClickedButton3d()
 { 
 
+	//TestVtk();
+
 	switch (Model3dStyle)
 	{
 	case 0:
@@ -488,6 +522,91 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 	}
 
 }
+
+void  TestVtk()
+{
+	std::vector<vtkSmartPointer<vtkPolyDataAlgorithm> > geometricObjectSources;
+
+	geometricObjectSources.push_back(vtkSmartPointer<vtkArrowSource>::New());//箭头
+	geometricObjectSources.push_back(vtkSmartPointer<vtkConeSource>::New());//锥体
+	geometricObjectSources.push_back(vtkSmartPointer<vtkCubeSource>::New());//立方体
+	geometricObjectSources.push_back(vtkSmartPointer<vtkCylinderSource>::New());//缸体
+	geometricObjectSources.push_back(vtkSmartPointer<vtkDiskSource>::New());//转盘
+	geometricObjectSources.push_back(vtkSmartPointer<vtkLineSource>::New());//直线
+	geometricObjectSources.push_back(vtkSmartPointer<vtkRegularPolygonSource>::New());//正多面体
+	geometricObjectSources.push_back(vtkSmartPointer<vtkSphereSource>::New());//球体
+
+	std::vector<vtkSmartPointer<vtkRenderer> > renderers;
+	std::vector<vtkSmartPointer<vtkPolyDataMapper> > mappers;
+	std::vector<vtkSmartPointer<vtkActor> > actors;
+	std::vector<vtkSmartPointer<vtkTextMapper> > textmappers;
+	std::vector<vtkSmartPointer<vtkActor2D> > textactors;
+
+	for (unsigned int i = 0; i < geometricObjectSources.size(); i++)
+	{
+		geometricObjectSources[i]->Update();
+
+		mappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+		mappers[i]->SetInputConnection(geometricObjectSources[i]->GetOutputPort());
+
+		actors.push_back(vtkSmartPointer<vtkActor>::New());
+		actors[i]->SetMapper(mappers[i]);
+
+		textmappers.push_back(vtkSmartPointer<vtkTextMapper>::New());
+		textmappers[i]->SetInput(geometricObjectSources[i]->GetClassName());
+
+		textactors.push_back(vtkSmartPointer<vtkActor2D>::New());
+		textactors[i]->SetMapper(textmappers[i]);
+		textactors[i]->SetPosition(10, 10);
+	}
+
+	// 设置格网承载形体
+	int gridCols = 3;
+	int gridRows = 3;
+	// 定义渲染范围
+	int rendererSize = 200;
+
+	vtkSmartPointer<vtkRenderWindow> renderWindow =
+		vtkSmartPointer<vtkRenderWindow>::New();
+	renderWindow->SetSize(rendererSize*gridCols, rendererSize*gridRows);
+
+	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
+		vtkSmartPointer<vtkRenderWindowInteractor>::New();
+
+	for (double row = 0; row < gridRows; row++)
+	{
+		for (double col = 0; col < gridCols; col++)
+		{
+			double index = row*gridCols + col;
+
+			//为每个cell定义渲染器
+			vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
+			renderer->SetBackground(.1, .2, .3);
+			double viewport[4] = {
+				((col)* rendererSize) / (gridCols * rendererSize),
+				((gridRows - (row + 1)) * rendererSize) / (gridRows * rendererSize),
+				((col + 1)              * rendererSize) / (gridCols * rendererSize),
+				((gridRows - (row)) * rendererSize) / (gridRows * rendererSize) };
+			renderer->SetViewport(viewport);
+			if (index < geometricObjectSources.size())
+			{
+				renderer->AddActor(actors[index]);
+				renderer->AddActor(textactors[index]);
+			}
+			renderWindow->AddRenderer(renderer);
+		}
+	}
+
+	vtkSmartPointer<vtkRenderWindowInteractor> interactor =
+		vtkSmartPointer<vtkRenderWindowInteractor>::New();
+	interactor->SetRenderWindow(renderWindow);
+	renderWindow->Render();
+	interactor->Start();
+
+}
+
+
+
 
 void CMFC_OCTDlg::Model3Dstyledefault()
 {
@@ -584,7 +703,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		ren->AddVolume(volume.GetPointer());
 		volume->FastDelete();
 		ren->SetActiveCamera(camera.GetPointer());
-		ren->SetBackground(1, 1, 1);
+		ren->SetBackground(.1, .28, .38);
 		ren->ResetCamera();
 
 	    renWin->AddRenderer(ren);
@@ -1554,6 +1673,11 @@ void KeyPressCallbackFunction(vtkObject* caller, long unsigned int eventId, void
 
 void CMFC_OCTDlg::OnBnClickedButtonStart()
 {
+	//MFCVtkWindow  vtkMfcWin(NULL); 
+	//vtkMfcWin.DoModal();
+
+
+
 	TRACE(" __________微软基础库输出 ____________");
 
 	if (true == flag)

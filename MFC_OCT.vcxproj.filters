@@ -108,6 +108,21 @@
     <ClInclude Include="OCTProgressBar.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MFCVtkWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\vtkGUISupportMFCModule.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\vtkMFCConfigure.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\vtkMFCWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BCGHeader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_OCT.cpp">
@@ -153,6 +168,9 @@
       <Filter>vtk\源文件</Filter>
     </ClCompile>
     <ClCompile Include="OCTProgressBar.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCVtkWindow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

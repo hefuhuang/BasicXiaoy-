@@ -26,6 +26,27 @@
 #include "vtkClientServerInterpreterInternals.h"
 #include "OpencvShowVedio.h"
 #include "OCTProgressBar.h"
+#include "MFCVtkWindow.h"
+
+
+#include <vtkTextMapper.h>
+#include <vtkActor.h>
+#include <vtkActor2D.h>
+#include <vtkRenderer.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkArrowSource.h>
+#include <vtkConeSource.h>
+#include <vtkCubeSource.h>
+#include <vtkCylinderSource.h>
+#include <vtkDiskSource.h>
+#include <vtkLineSource.h>
+#include <vtkRegularPolygonSource.h>
+#include <vtkSphereSource.h>
+#include <vector>
+
+
+//#include "BCGHeader.h"
 
 //#include "SysReadAndWrite.h"
 
@@ -47,6 +68,10 @@ void GetTwoPoint(int event, int x, int y, int flags, void* ustc);   //opencv鼠标
 void calDistanceOfTwoPoint(cv::Point PointBegin, cv::Point PointEnd, double& length, double& angle);  // 传引用 length angle
 
 UINT ShowVedio(LPVOID mDParam);   // 播放OCT摄像头图片 
+
+void TestVtk();
+
+
 
 // CMFC_OCTDlg 对话框
 class CMFC_OCTDlg : public CDialogEx
@@ -99,6 +124,7 @@ protected:
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
+	//CBCGPRibbonStatusBar m_wndStatusBar;             //!< 状态栏
 
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
@@ -116,6 +142,14 @@ private:
 
 public:
 	CStatic m_Picture;
+	CSliderCtrl mScrollLight;
+	CSliderCtrl mScrollLaser;
+	CSliderCtrl mScrollGrayLevel;
+	CEdit m_EDITX;
+	CEdit m_EDITY;
+	CEdit m_EDITZ;
+	CComboBox mModel3DChioce;
+	CStatic m_ImageVedio;
 	//POINT  ptBorder;
 	afx_msg LRESULT onFrame(WPARAM wp, LPARAM lp);
 	afx_msg void OnBnClickedButtonAddpicture();
@@ -124,21 +158,12 @@ public:
 	afx_msg void OnBnClickedButtonparam();
 	afx_msg void OnBnClickedButton3dparam();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
-	CEdit m_EDITX;
-	CEdit m_EDITY;
-	CEdit m_EDITZ;
 	afx_msg void OnNMCustomdrawSliderLifgt(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnNMCustomdrawSliderLaser(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnNMCustomdrawSliderLifgt3(NMHDR *pNMHDR, LRESULT *pResult);
-	CSliderCtrl mScrollLight;
-	CSliderCtrl mScrollLaser;
-	CSliderCtrl mScrollGrayLevel;
 	virtual void WinHelp(DWORD dwData, UINT nCmd = HELP_CONTEXT);
-	
 	afx_msg void OnBnClickedButtonSnippintool();
-	CComboBox mModel3DChioce;
 	afx_msg void OnCbnSelchangeComb3dmodel();
-	CStatic m_ImageVedio;
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 };
 

@@ -22,4 +22,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 	DECLARE_DISPATCH_MAP()
 	DECLARE_INTERFACE_MAP()
+public:
+	int vtkMfcWindow;
+	int MfcVtkWindow;
 };
