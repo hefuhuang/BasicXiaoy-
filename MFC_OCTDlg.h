@@ -10,6 +10,8 @@
 #include <vtkMultiThreader.h>
 #include <vtkCallbackCommand.h>
 #include <vtkStructuredGridReader.h>
+#include <vector> 
+
 #include <vtkAutoInit.h> 
 
 #include "UIthread.h"
@@ -28,7 +30,6 @@
 #include "OCTProgressBar.h"
 #include "MFCVtkWindow.h"
 
-
 #include <vtkTextMapper.h>
 #include <vtkActor.h>
 #include <vtkActor2D.h>
@@ -43,8 +44,7 @@
 #include <vtkLineSource.h>
 #include <vtkRegularPolygonSource.h>
 #include <vtkSphereSource.h>
-#include <vector>
-
+#include <vtkAutoInit.h>
 
 //#include "BCGHeader.h"
 //#include "SysReadAndWrite.h"
@@ -80,7 +80,7 @@ void TestVtk();
 
 
 // CMFC_OCTDlg 对话框
-class CFreeMenu; 
+class CFreeMenu;  
 class CMFC_OCTDlg : public CDialogEx
 {
 	// 构造
@@ -156,8 +156,6 @@ private:
 	CStatusBar m_Statusbar;   // status 
 
 	CStatusBarCtrl bkStatus; 
-
-	
 
 	CToolBar m_ToolBar    ; 
 

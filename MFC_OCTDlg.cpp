@@ -252,7 +252,8 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	mModel3DChioce.SetCurSel(0);
 
 	GetDlgItem(IDC_STATIC_Vedio)->GetClientRect(&GlobalRect);
-	//ShowWindow(SW_MAXIMIZE);
+
+
 
 	//m_Statusbar.Create(this, WS_CHILD | WS_VISIBLE | CBRS_BOTTOM, AFX_IDW_STATUS_BAR);
 	//m_Statusbar.GetStatusBarCtrl().SetMinHeight(20);
@@ -338,7 +339,19 @@ void CMFC_OCTDlg::OnPaint()
 		// 绘制图标
 		dc.DrawIcon(x, y, m_hIcon);
 
-		//////////////////////////////////////////
+		//MENUINFO MenuInfo = { 0 };
+		//MenuInfo.cbSize = sizeof(MenuInfo);
+		//MenuInfo.hbrBack = new Brush; // Brush you want to draw
+		//MenuInfo.fMask = MIM_BACKGROUND;
+		//MenuInfo.dwStyle = MNS_AUTODISMISS;
+		//MenuInfo.cyMax = 25;
+
+		//CMenu* pMenu = GetMenu();
+		//HMENU mh = pMenu->GetSafeHmenu();
+		//if (IsMenu(pMenu->m_hMenu))
+		//{
+		//	SetMenuInfo(mh, &MenuInfo);
+		//}
 	}
 	else
 	{
