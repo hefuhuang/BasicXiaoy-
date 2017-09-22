@@ -26,7 +26,7 @@
 #include "vtkSurfaceReconstructionFilter.h"
 #include "vtkReverseSense.h"
 #include "MFC_OCT.h"
-
+#include "freemenu.h"
 
 #include "MFC_OCTDlg.h" 
 #include "DlgParam.h"
@@ -195,7 +195,7 @@ BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_SLIDER_LIFGT, &CMFC_OCTDlg::OnNMCustomdrawSliderLifgt)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_SLIDER_Laser, &CMFC_OCTDlg::OnNMCustomdrawSliderLaser)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_SLIDER_LIFGT3, &CMFC_OCTDlg::OnNMCustomdrawSliderLifgt3)
-
+	ON_COMMAND_RANGE(ID_INDICATOR_NISH, ID_INDICATOR_TIME, NULL)
 	ON_BN_CLICKED(IDC_BUTTON_Snippintool, &CMFC_OCTDlg::OnBnClickedButtonSnippintool)
 	ON_CBN_SELCHANGE(IDC_COMB3dModel, &CMFC_OCTDlg::OnCbnSelchangeComb3dmodel)
 	ON_WM_SIZE()
@@ -209,6 +209,15 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
+
+	::MENUINFO lpcmi;
+	m_brush.CreateSolidBrush(RGB(255, 0, 0));
+	memset(&lpcmi, 0, sizeof(::LPCMENUINFO));
+	lpcmi.cbSize = sizeof(MENUINFO);
+	lpcmi.fMask = MIM_BACKGROUND;
+	lpcmi.hbrBack = (HBRUSH)m_brush.operator HBRUSH();
+	::SetMenuInfo(GetMenu()->m_hMenu, &lpcmi);
+
 	if (pSysMenu != NULL)
 	{
 		BOOL bNameValid;
@@ -220,6 +229,7 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 			pSysMenu->AppendMenu(MF_SEPARATOR);
 			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
 		}
+	
 	}
 
 	// 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
@@ -244,14 +254,41 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	GetDlgItem(IDC_STATIC_Vedio)->GetClientRect(&GlobalRect);
 	//ShowWindow(SW_MAXIMIZE);
 
-	m_Statusbar.Create(this);
-	m_Statusbar.SetIndicators(indicators, sizeof(indicators) / sizeof(UINT));  // set the number of status 
+	//m_Statusbar.Create(this, WS_CHILD | WS_VISIBLE | CBRS_BOTTOM, AFX_IDW_STATUS_BAR);
+	//m_Statusbar.GetStatusBarCtrl().SetMinHeight(20);
+	//m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0)); 
+	//m_Statusbar.SetIndicators(indicators, sizeof(indicators) / sizeof(UINT));  // set the number of status 
+	//CRect rect;
+	//GetClientRect(&rect);
+	//m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
+	//m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
+	//m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(180, 180, 180));
+	//RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, ID_INDICATOR_TIME); 
+
+	 //// menu Bar 
+	//font.CreateFont(-20, 0, 0, 0, 900, 0, 0, 0, 0, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+	//	DEFAULT_PITCH, _T("Times New Roman"));
+	//m_menu = new CFreeMenu(IDR_MENU1, CPoint(10, 10), this,
+	//	RGB(0, 192, 192),
+	//	RGB(0, 225, 255),
+	//	RGB(0, 128, 128),
+	//	RGB(255, 255, 255), &font, 0);
+	//if (m_menu)
+	//{
+	//	m_menu->DrawMenu();
+	//}
+
+	/// status bar 
+	bkStatus.Create(WS_CHILD | WS_VISIBLE | SBT_OWNERDRAW, CRect(0, 0, 0, 0), this, 0);
 	CRect rect;
-	GetClientRect(&rect);
-	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
-	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
-	//在ping屏幕上绘制状态栏
-	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, ID_INDICATOR_TIME);
+	GetWindowRect(rect);
+	int strPartDim[3] = { rect.Width() / 4, rect.Width() / 3 * 2, rect.Width() / 3 * 3 }; //分割数量
+	bkStatus.SetParts(3, strPartDim);
+	bkStatus.SetMinHeight(20);
+	bkStatus.SetBkColor(RGB(255,0,0)); 
+	bkStatus.SetText(_T("就绪"), 0, 0);
+	bkStatus.SetText(_T("当前范围"), 1, 0);
+	bkStatus.SetText(_T("时间"), 2, 0);
 
 	SetWindowText(_T("regenovo"));
 
@@ -314,39 +351,46 @@ void CMFC_OCTDlg::OnPaint()
 		//CDC *pDC = this->GetDC();
 		//this->DrawLine(pDC);
 
-		CPaintDC    dc(this);
-		CRect rect;
-		CDC *pDC = &dc;
-		CDC memDC;
-		m_Picture.GetClientRect(&rect);
-		CBitmap memBitmap;
-		memDC.CreateCompatibleDC(NULL);
-		memBitmap.CreateCompatibleBitmap(pDC, rect.Width(), rect.Height());
-		memDC.SetBkMode(TRANSPARENT);
-		memDC.SelectObject(&memBitmap);
-		COLORREF bkColor = ::GetSysColor(COLOR_3DFACE);//得到系统颜色    
-		memDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), bkColor);//绘制背景    
-		memDC.FillSolidRect(rect.left, rect.bottom - 40, rect.Width(), rect.Height(), RGB(80, 80, 80));
-		
-		int r1 = 147, g1 = 198, b1 = 198;
-		int r2 = 25, g2 = 56, b2 = 56;
-		for (int i = 0; i < rect.Width(); i++){
-		int r, g, b;
-		r = r1 + (i * (r2 - r1) / rect.Width());
-		g = g1 + (i * (g2 - g1) / rect.Width());
-		b = b1 + (i * (b2 - b1) / rect.Width());
-		memDC.FillSolidRect(i, 0, 1, rect.Height(), RGB(r, g, b));
-		}
-
-		pDC->BitBlt(rect.left, rect.top, rect.Width(), rect.Height(), &memDC, 0, 0, SRCCOPY);
-		ReleaseDC(pDC);
-
-
+		this->SetBkground(); 
 
 		////////////////////
 		CDialogEx::OnPaint();
 	}
 } 
+
+
+void  CMFC_OCTDlg::SetBkground()
+{
+
+	CPaintDC    dc(this);
+	CRect rect;
+	CDC *pDC = &dc;
+	CDC memDC;
+	m_Picture.GetClientRect(&rect);
+	CBitmap memBitmap;
+	memDC.CreateCompatibleDC(NULL);
+	memBitmap.CreateCompatibleBitmap(pDC, rect.Width(), rect.Height());
+	memDC.SetBkMode(TRANSPARENT);
+	memDC.SelectObject(&memBitmap);
+	COLORREF bkColor = ::GetSysColor(COLOR_3DFACE);//得到系统颜色    
+	memDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), bkColor);//绘制背景    
+	memDC.FillSolidRect(rect.left, rect.bottom - 40, rect.Width(), rect.Height(), RGB(80, 80, 80));
+
+	int r1 = 147, g1 = 198, b1 = 198;
+	int r2 = 25, g2 = 56, b2 = 56;
+	for (int i = 0; i < rect.Width(); i++){
+		int r, g, b;
+		r = r1 + (i * (r2 - r1) / rect.Width());
+		g = g1 + (i * (g2 - g1) / rect.Width());
+		b = b1 + (i * (b2 - b1) / rect.Width());
+		memDC.FillSolidRect(i, 0, 1, rect.Height(), RGB(r, g, b));
+	}
+
+	pDC->BitBlt(rect.left, rect.top, rect.Width(), rect.Height(), &memDC, 0, 0, SRCCOPY);
+	ReleaseDC(pDC);
+
+
+}
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
 //显示。
@@ -2151,12 +2195,13 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
 	strTime= tm.Format("%y-%m-%d %H:%M:%S");
 
-	CRect rect;
-	GetClientRect(&rect);
-	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
-	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
-	m_Statusbar.SetPaneText(1, strTime);
-	m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
+	//CRect rect;
+	//GetClientRect(&rect);
+	//m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
+	//m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
+	//m_Statusbar.SetPaneText(1, strTime);
+	//m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
+	//m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0));
 	//RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
 
 	CDialogEx::OnTimer(nIDEvent);

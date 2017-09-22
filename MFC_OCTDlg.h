@@ -71,8 +71,16 @@ UINT ShowVedio(LPVOID mDParam);   // 播放OCT摄像头图片
 void TestVtk();
 
 
+#ifndef AFX_TESTDIDLG_H__6EA700CE_0AF3_11D2_9768_0080C858DB41__INCLUDED_
+#define AFX_TESTDIDLG_H__6EA700CE_0AF3_11D2_9768_0080C858DB41__INCLUDED_
+#endif
+#if _MSC_VER >= 1000
+#pragma once
+#endif // _MSC_VER >= 1000 
+
 
 // CMFC_OCTDlg 对话框
+class CFreeMenu; 
 class CMFC_OCTDlg : public CDialogEx
 {
 	// 构造
@@ -82,6 +90,9 @@ public:
 	CMFC_OCTDlg(CWnd* pParent = NULL);	// 标准构造函数
 	// 对话框数据
 	enum { IDD = IDD_MFC_OCT_DIALOG };
+
+	CFreeMenu  *m_menu;
+	CFont font;
 
 //	SysReadAndWrite  SysLog;
 
@@ -118,7 +129,9 @@ public:
 	// 实现 
 	void DrawLine(CDC* pDC);
 
-	void ChangeSize(UINT nID, int x, int y);
+	void ChangeSize(UINT nID, int x, int y);  
+
+	void  SetBkground();
 
 protected:
 	HICON m_hIcon;
@@ -142,7 +155,17 @@ private:
 
 	CStatusBar m_Statusbar;   // status 
 
+	CStatusBarCtrl bkStatus; 
+
+	
+
+	CToolBar m_ToolBar    ; 
+
 	CRect  m_TotalRect; 
+
+	CBrush m_brush;
+
+	CMenu* m_MenuBar;
 
 	vtkNew<vtkInteractorEventRecorder> recorder;
 
@@ -151,29 +174,51 @@ private:
 public:
 
 	CStatic m_Picture;
+
 	CSliderCtrl mScrollLight;
+
 	CSliderCtrl mScrollLaser;
+
 	CSliderCtrl mScrollGrayLevel;
+
 	CEdit m_EDITX;
+
 	CEdit m_EDITY;
+
 	CEdit m_EDITZ;
+
 	CComboBox mModel3DChioce;
+
 	CStatic m_ImageVedio;
 	//POINT  ptBorder;
 	afx_msg LRESULT onFrame(WPARAM wp, LPARAM lp);
+
 	afx_msg void OnBnClickedButtonAddpicture();
+
 	afx_msg void OnBnClickedButton3d();
+
 	afx_msg void OnBnClickedButtonStart();
+
 	afx_msg void OnBnClickedButtonparam();
+
 	afx_msg void OnBnClickedButton3dparam();
+
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+
 	afx_msg void OnNMCustomdrawSliderLifgt(NMHDR *pNMHDR, LRESULT *pResult);
+
 	afx_msg void OnNMCustomdrawSliderLaser(NMHDR *pNMHDR, LRESULT *pResult);
+
 	afx_msg void OnNMCustomdrawSliderLifgt3(NMHDR *pNMHDR, LRESULT *pResult);
+
 	virtual void WinHelp(DWORD dwData, UINT nCmd = HELP_CONTEXT);
+
 	afx_msg void OnBnClickedButtonSnippintool();
+
 	afx_msg void OnCbnSelchangeComb3dmodel();
+
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+
 };
 
 class Timer {

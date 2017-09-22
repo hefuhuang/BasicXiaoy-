@@ -37,6 +37,12 @@
     <Filter Include="vtk\源文件">
       <UniqueIdentifier>{64f6f3e5-37fb-4eb1-aa76-eae495a4c620}</UniqueIdentifier>
     </Filter>
+    <Filter Include="menu">
+      <UniqueIdentifier>{54351792-2ee2-491b-9630-886c14848043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="status">
+      <UniqueIdentifier>{1e28ac77-e8d9-4019-a55a-90ff798b366b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -123,6 +129,18 @@
     <ClInclude Include="BCGHeader.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\menu\AutoBuildCount.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\menu\FreeMenu.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\menu\MenuItemWnd.h">
+      <Filter>menu</Filter>
+    </ClInclude>
+    <ClInclude Include="mystatusBar.h">
+      <Filter>status</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_OCT.cpp">
@@ -173,6 +191,15 @@
     <ClCompile Include="MFCVtkWindow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\menu\FreeMenu.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\menu\MenuItemWnd.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="mystatusBar.cpp">
+      <Filter>status</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MFC_OCT.rc">
@@ -207,6 +234,9 @@
       <Filter>源文件\资源文件</Filter>
     </Image>
     <Image Include="..\icon32x32.ico">
+      <Filter>源文件\资源文件</Filter>
+    </Image>
+    <Image Include="..\toolbar1.bmp">
       <Filter>源文件\资源文件</Filter>
     </Image>
   </ItemGroup>

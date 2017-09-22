@@ -68,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>C:\Program Files\VTK\include\vtk-8.1;..\IO\Image;C:\Program Files\VTK\lib;..\opencv\lib;C:\Users\HHF\Desktop\Project\MFC_OCT\lib;$(LibraryPath)</LibraryPath>
     <ReferencePath>..\SysReadAndWrite;$(ReferencePath)</ReferencePath>
-    <IncludePath>E:\BCGControlBar\BCGSuiteEvaluation\BCGSuite;E:\BCGControlBar\install\BCGCBPro;..\SysReadAndWrite;..\include;..\opencv\include;..\opencv\sources\modules\core\src;..\opencv;C:\Program Files\VTK\include\vtk-8.1;..\tiff\source;..\tiff\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Status;..\menu;E:\BCGControlBar\BCGSuiteEvaluation\BCGSuite;E:\BCGControlBar\install\BCGCBPro;..\SysReadAndWrite;..\include;..\opencv\include;..\opencv\sources\modules\core\src;..\opencv;C:\Program Files\VTK\include\vtk-8.1;..\tiff\source;..\tiff\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ReferencePath>..\opencv\build\include;..\opencv\sources\include\opencv2;..\vtk;..\opencv\opencv2;..\opencv\sources;..\opencv\include;C:\Program Files\VTK\include;$(ReferencePath)</ReferencePath>
@@ -165,6 +165,9 @@
     <ClInclude Include="..\include\vtkGUISupportMFCModule.h" />
     <ClInclude Include="..\include\vtkMFCConfigure.h" />
     <ClInclude Include="..\include\vtkMFCWindow.h" />
+    <ClInclude Include="..\menu\AutoBuildCount.h" />
+    <ClInclude Include="..\menu\FreeMenu.h" />
+    <ClInclude Include="..\menu\MenuItemWnd.h" />
     <ClInclude Include="AddSheet.h" />
     <ClInclude Include="BCGHeader.h" />
     <ClInclude Include="C2dParamSeting.h" />
@@ -175,6 +178,7 @@
     <ClInclude Include="MFCVtkWindow.h" />
     <ClInclude Include="MFC_OCT.h" />
     <ClInclude Include="MFC_OCTDlg.h" />
+    <ClInclude Include="mystatusBar.h" />
     <ClInclude Include="OCTProgressBar.h" />
     <ClInclude Include="OpencvShowVedio.h" />
     <ClInclude Include="RegenvtkColor.h" />
@@ -189,6 +193,8 @@
     <ClInclude Include="vtkGUISupportMFCModule.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\menu\FreeMenu.cpp" />
+    <ClCompile Include="..\menu\MenuItemWnd.cpp" />
     <ClCompile Include="AddSheet.cpp" />
     <ClCompile Include="C2dParamSeting.cpp" />
     <ClCompile Include="C3DParaSeting.cpp" />
@@ -197,6 +203,7 @@
     <ClCompile Include="MFCVtkWindow.cpp" />
     <ClCompile Include="MFC_OCT.cpp" />
     <ClCompile Include="MFC_OCTDlg.cpp" />
+    <ClCompile Include="mystatusBar.cpp" />
     <ClCompile Include="OCTProgressBar.cpp" />
     <ClCompile Include="OpencvShowVedio.cpp" />
     <ClCompile Include="RegenvtkColor.cpp" />
@@ -221,6 +228,7 @@
     <Image Include="..\icon32x32.ico" />
     <Image Include="..\test\test.bmp" />
     <Image Include="..\test\TestTiff.bmp" />
+    <Image Include="..\toolbar1.bmp" />
     <Image Include="icon1.ico" />
     <Image Include="icon2.ico" />
     <Image Include="res\MFC_OCT.ico" />
