@@ -47,7 +47,6 @@
 
 
 //#include "BCGHeader.h"
-
 //#include "SysReadAndWrite.h"
 
 /////////////////////////////////////
@@ -92,6 +91,7 @@ public:
 	virtual void ReadTiffParam(char* fileName, int &width, int &height, int &nTotalFrame, unsigned short &nComp, int &nStrip, uint16 &samplesperpixel, uint16 &bitsPersample);
 
 	virtual void SaveTif2Bmp(char* pszTif, LPTSTR pszBmp);
+
 	virtual void SaveBmpFile(LPTSTR pszBmp, int nW, int nH, int nBpp, LPBYTE pBuf);
 
 	void DrawMatToPic(Mat cvImg, UINT ID);
@@ -124,23 +124,32 @@ protected:
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
-	//CBCGPRibbonStatusBar m_wndStatusBar;             //!< 状态栏
-
+	//CBCGPRibbonStatusBar m_wndStatusBar;          
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
+
 	afx_msg void OnPaint();
+
 	afx_msg HCURSOR OnQueryDragIcon();
+
 	afx_msg LRESULT ReadMatShow(WPARAM wParam, LPARAM lParam);
+
 	DECLARE_MESSAGE_MAP();
 private:
 
 	CWinThread*  OCTthreadHandle;
+
 	CWinThread*  DrawThreadHandle;
+
 	CStatusBar m_Statusbar;   // status 
+
 	CRect  m_TotalRect; 
+
 	vtkNew<vtkInteractorEventRecorder> recorder;
+
 	vtkNew<vtkRenderWindowInteractor> InteractorCp;
 
 public:
+
 	CStatic m_Picture;
 	CSliderCtrl mScrollLight;
 	CSliderCtrl mScrollLaser;
