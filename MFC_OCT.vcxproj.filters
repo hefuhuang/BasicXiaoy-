@@ -141,9 +141,6 @@
     <ClInclude Include="mystatusBar.h">
       <Filter>status</Filter>
     </ClInclude>
-    <ClInclude Include="MyMenu.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_OCT.cpp">
@@ -202,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="mystatusBar.cpp">
       <Filter>status</Filter>
-    </ClCompile>
-    <ClCompile Include="MyMenu.cpp">
-      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

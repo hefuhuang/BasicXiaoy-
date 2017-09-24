@@ -178,7 +178,6 @@
     <ClInclude Include="MFCVtkWindow.h" />
     <ClInclude Include="MFC_OCT.h" />
     <ClInclude Include="MFC_OCTDlg.h" />
-    <ClInclude Include="MyMenu.h" />
     <ClInclude Include="mystatusBar.h" />
     <ClInclude Include="OCTProgressBar.h" />
     <ClInclude Include="OpencvShowVedio.h" />
@@ -204,7 +203,6 @@
     <ClCompile Include="MFCVtkWindow.cpp" />
     <ClCompile Include="MFC_OCT.cpp" />
     <ClCompile Include="MFC_OCTDlg.cpp" />
-    <ClCompile Include="MyMenu.cpp" />
     <ClCompile Include="mystatusBar.cpp" />
     <ClCompile Include="OCTProgressBar.cpp" />
     <ClCompile Include="OpencvShowVedio.cpp" />

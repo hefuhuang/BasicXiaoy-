@@ -1,9 +1,7 @@
-﻿生成启动时间为 2017/9/22 16:19:39。
+﻿生成启动时间为 2017/9/22 17:14:10。
      1>项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /I..\lib /Zi /nologo /W3 /WX- /sdl /O2 /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _WINDOWS /D _DEBUG /D "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)" /D "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)" /D "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)" /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt ..\menu\FreeMenu.cpp ..\menu\MenuItemWnd.cpp MFC_OCT.cpp MFC_OCTDlg.cpp UIthread.cpp
-         FreeMenu.cpp
-         MenuItemWnd.cpp
+         E:\visiual stdio 2013\install\VC\bin\x86_amd64\CL.exe /c /I..\lib /Zi /nologo /W3 /WX- /sdl /O2 /D _CRT_SECURE_NO_WARNINGS /D WIN32 /D _WINDOWS /D _DEBUG /D "vtkDomainsChemistry_AUTOINIT=1(vtkDomainsChemistryOpenGL2)" /D "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)" /D "vtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL2)" /D _UNICODE /D UNICODE /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt MFC_OCT.cpp MFC_OCTDlg.cpp UIthread.cpp
          MFC_OCT.cpp
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/mat.hpp(2586): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
      1>C:\Users\HHF\Desktop\MFC_OCT\opencv\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
@@ -44,7 +42,6 @@
          x64\Debug\MFCVtkWindow.obj
          x64\Debug\MFC_OCT.obj
          x64\Debug\MFC_OCTDlg.obj
-         x64\Debug\MyMenu.obj
          x64\Debug\mystatusBar.obj
          x64\Debug\OCTProgressBar.obj
          x64\Debug\OpencvShowVedio.obj
@@ -55,10 +52,9 @@
          x64\Debug\vtkClientServerInterpreterInternals.obj
          x64\Debug\vtkClientServerStream.obj
          C:\Users\HHF\Desktop\MFC_OCT\lib\SysReadAndWrite.lib
-     1>MyMenu.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl CMyMenuData::CMyMenuData(void)" (??0CMyMenuData@@QEAA@XZ)，该符号在函数 "public: void __cdecl CMyMenu::ChangeToOwnerDraw(class CMyMenu *)" (?ChangeToOwnerDraw@CMyMenu@@QEAAXPEAV1@@Z) 中被引用
-     1>C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe : fatal error LNK1120: 1 个无法解析的外部命令
-     1>已完成生成项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”(Build 个目标)的操作 - 失败。
+         MFC_OCT.vcxproj -> C:\Users\HHF\Desktop\MFC_OCT\x64\Debug\MFC_OCT.exe
+     1>已完成生成项目“C:\Users\HHF\Desktop\MFC_OCT\MFC_OCT\MFC_OCT.vcxproj”(Build 个目标)的操作。
 
-生成失败。
+生成成功。
 
-已用时间 00:00:19.92
+已用时间 00:00:18.52

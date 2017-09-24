@@ -279,14 +279,18 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	//	m_menu->DrawMenu();
 	//}
 
+
+
 	/// status bar 
-	bkStatus.Create(WS_CHILD | WS_VISIBLE | SBT_OWNERDRAW, CRect(0, 0, 0, 0), this, 0);
+	bkStatus.Create(WS_CHILD | WS_VISIBLE | SBT_OWNERDRAW , CRect(0, 0, 0, 0), this, 0);
 	CRect rect;
 	GetWindowRect(rect);
 	int strPartDim[3] = { rect.Width() / 4, rect.Width() / 3 * 2, rect.Width() / 3 * 3 }; //分割数量
 	bkStatus.SetParts(3, strPartDim);
-	bkStatus.SetMinHeight(20);
+	bkStatus.SetMinHeight(30);
+
 	bkStatus.SetBkColor(RGB(255,0,0)); 
+
 	bkStatus.SetText(_T("就绪"), 0, 0);
 	bkStatus.SetText(_T("当前范围"), 1, 0);
 	bkStatus.SetText(_T("时间"), 2, 0);

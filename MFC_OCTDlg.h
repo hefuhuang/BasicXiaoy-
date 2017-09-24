@@ -163,7 +163,7 @@ private:
 
 	CBrush m_brush;
 
-	CMenu* m_MenuBar;
+	//CMenu* m_MenuBar;
 
 	vtkNew<vtkInteractorEventRecorder> recorder;
 
