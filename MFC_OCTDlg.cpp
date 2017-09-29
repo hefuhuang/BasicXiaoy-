@@ -397,8 +397,8 @@ void  CMFC_OCTDlg::SetBkground()
 	memDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), bkColor);//绘制背景    
 	memDC.FillSolidRect(rect.left, rect.bottom - 40, rect.Width(), rect.Height(), RGB(80, 80, 80));
 
-	int r1 = 147, g1 = 198, b1 = 198;
-	int r2 = 25, g2 = 56, b2 = 56;
+	int r1 = 0, g1 = 0, b1 = 0;
+	int r2 = 255, g2 = 255, b2 = 255;
 	for (int i = 0; i < rect.Width(); i++){
 		int r, g, b;
 		r = r1 + (i * (r2 - r1) / rect.Width());
@@ -747,8 +747,8 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		double opacityWindow = 240;
 		//灰度值与不透明度  为零则是全透明 为1 则为完全不透明 
 		//opacityTransferFunction->AddSegment(-69, 0, 89, 1);
-		opacityTransferFunction->AddPoint(scalarRange[0], -1);
-		opacityTransferFunction->AddPoint(scalarRange[1], 0.8);
+		opacityTransferFunction->AddPoint(scalarRange[0], -2.5);
+		opacityTransferFunction->AddPoint(scalarRange[1], 2);
 		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
 			 
 		color->RemoveAllPoints();
@@ -767,7 +767,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		ren->AddVolume(volume.GetPointer());
 		volume->FastDelete();
 		ren->SetActiveCamera(camera.GetPointer());
-		ren->SetBackground(.1, .28, .38);
+		ren->SetBackground(1, 1, 1);
 		ren->ResetCamera();
 
 	    renWin->AddRenderer(ren);
@@ -2446,8 +2446,9 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_STATIC_X, cx, cy);
 		ChangeSize(IDC_STATIC_Time, cx, cy);
 
-
-		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标；
+		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标； 
+		//this->SetBkground();
+	
 	}
 
 }
