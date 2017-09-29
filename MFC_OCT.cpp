@@ -44,7 +44,7 @@ BOOL CMFC_OCTApp::InitInstance()
 
 	if (GetLastError() == ERROR_ALREADY_EXISTS)
 	{
-		AfxMessageBox(_T("软件已经打开，请关闭后重试！"));
+		AfxMessageBox(_T("软件已经打开，请勿重复开启！"));
 		CloseHandle(hObject);
 		return FALSE;
 	}

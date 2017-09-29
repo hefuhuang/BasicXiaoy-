@@ -199,6 +199,8 @@ BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_Snippintool, &CMFC_OCTDlg::OnBnClickedButtonSnippintool)
 	ON_CBN_SELCHANGE(IDC_COMB3dModel, &CMFC_OCTDlg::OnCbnSelchangeComb3dmodel)
 	ON_WM_SIZE()
+	ON_WM_ERASEBKGND()
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 // CMFC_OCTDlg 消息处理程序
 
@@ -255,16 +257,17 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 
 
 
-	//m_Statusbar.Create(this, WS_CHILD | WS_VISIBLE | CBRS_BOTTOM, AFX_IDW_STATUS_BAR);
-	//m_Statusbar.GetStatusBarCtrl().SetMinHeight(20);
-	//m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0)); 
-	//m_Statusbar.SetIndicators(indicators, sizeof(indicators) / sizeof(UINT));  // set the number of status 
-	//CRect rect;
-	//GetClientRect(&rect);
-	//m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
-	//m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
-	//m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(180, 180, 180));
-	//RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, ID_INDICATOR_TIME); 
+	m_Statusbar.Create(this, WS_CHILD | WS_VISIBLE | CBRS_BOTTOM, AFX_IDW_STATUS_BAR);
+	m_Statusbar.GetStatusBarCtrl().SetMinHeight(20);
+	m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0)); 
+	m_Statusbar.SetIndicators(indicators, sizeof(indicators) / sizeof(UINT));  // set the number of status 
+	CRect rect;
+	GetClientRect(&rect);
+	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
+	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
+	m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(180, 180, 180));
+	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, ID_INDICATOR_TIME); 
+
 
 	 //// menu Bar 
 	//font.CreateFont(-20, 0, 0, 0, 900, 0, 0, 0, 0, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
@@ -282,18 +285,18 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 
 
 	/// status bar 
-	bkStatus.Create(WS_CHILD | WS_VISIBLE | SBT_OWNERDRAW , CRect(0, 0, 0, 0), this, 0);
-	CRect rect;
-	GetWindowRect(rect);
-	int strPartDim[3] = { rect.Width() / 4, rect.Width() / 3 * 2, rect.Width() / 3 * 3 }; //分割数量
-	bkStatus.SetParts(3, strPartDim);
-	bkStatus.SetMinHeight(30);
+	//bkStatus.Create(WS_CHILD | WS_VISIBLE | SBT_OWNERDRAW , CRect(0, 0, 0, 0), this, 0);
+	//CRect rect;
+	//GetWindowRect(rect);
+	//int strPartDim[3] = { rect.Width() / 4, rect.Width() / 3 * 2, rect.Width() / 3 * 3 }; //分割数量
+	//bkStatus.SetParts(3, strPartDim);
+	//bkStatus.SetMinHeight(30);
 
-	bkStatus.SetBkColor(RGB(255,0,0)); 
+	//bkStatus.SetBkColor(RGB(255,0,0)); 
 
-	bkStatus.SetText(_T("就绪"), 0, 0);
-	bkStatus.SetText(_T("当前范围"), 1, 0);
-	bkStatus.SetText(_T("时间"), 2, 0);
+	//bkStatus.SetText(_T("就绪"), 0, 0);
+	//bkStatus.SetText(_T("当前范围"), 1, 0);
+	//bkStatus.SetText(_T("时间"), 2, 0);
 
 	SetWindowText(_T("regenovo"));
 
@@ -364,12 +367,13 @@ void CMFC_OCTDlg::OnPaint()
 		//m_Picture.GetClientRect(rect);
 		//dc.FillSolidRect(rect, RGB(1, 1, 1));     //设置为黑色背景  
 
-		//CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
-		//CDC *pDC = this->GetDC();
+		CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
+		CDC *pDC = this->GetDC();
 		//this->DrawLine(pDC);
+		this->setScale(pDC);
 
 		this->SetBkground(); 
-
+		
 		////////////////////
 		CDialogEx::OnPaint();
 	}
@@ -405,7 +409,6 @@ void  CMFC_OCTDlg::SetBkground()
 
 	pDC->BitBlt(rect.left, rect.top, rect.Width(), rect.Height(), &memDC, 0, 0, SRCCOPY);
 	ReleaseDC(pDC);
-
 
 }
 
@@ -747,7 +750,7 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		opacityTransferFunction->AddPoint(scalarRange[0], -1);
 		opacityTransferFunction->AddPoint(scalarRange[1], 0.8);
 		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
-
+			 
 		color->RemoveAllPoints();
 		color->AddRGBPoint(scalarRange[0], -1, -1, -1);
 		color->AddRGBPoint(scalarRange[1], 1.0, 1.0, 1.0);
@@ -2202,6 +2205,11 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	SetDlgItemText(IDC_EDIT_ShowTime, strTime);        //初始化编辑框显示
 	SetTimer(1, 1000, NULL);         //启动定时器
 
+	//CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
+	//CDC *pDC = this->GetDC();
+	////this->DrawLine(pDC);
+	//this->setScale(pDC);
+
 	CPoint   point;
 	GetCursorPos(&point);
 	CString str;
@@ -2212,14 +2220,14 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
 	strTime= tm.Format("%y-%m-%d %H:%M:%S");
 
-	//CRect rect;
-	//GetClientRect(&rect);
-	//m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
-	//m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
-	//m_Statusbar.SetPaneText(1, strTime);
-	//m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
-	//m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0));
-	//RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
+	CRect rect;
+	GetClientRect(&rect);
+	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
+	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
+	m_Statusbar.SetPaneText(1, strTime);
+	m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
+	m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0));
+	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
 
 	CDialogEx::OnTimer(nIDEvent);
 }
@@ -2430,7 +2438,14 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_EDITPZ, cx, cy);
 		ChangeSize(IDC_EDIT_ShowTime, cx, cy);
 		ChangeSize(IDC_STATIC, cx, cy);
-		//ChangeSize(IDC_STATIC_model, cx, cy);
+		ChangeSize(IDC_STATIC_model,cx,cy);
+	    ChangeSize(IDC_STATIC_EditLight, cx, cy);
+		ChangeSize(IDC_STATIC_EditLASER, cx, cy);
+		ChangeSize(IDC_STATIC_Z, cx, cy);
+		ChangeSize(IDC_STATIC_Y, cx, cy);
+		ChangeSize(IDC_STATIC_X, cx, cy);
+		ChangeSize(IDC_STATIC_Time, cx, cy);
+
 
 		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标；
 	}
@@ -2454,6 +2469,135 @@ void CMFC_OCTDlg::ChangeSize(UINT nID, int x, int y)
 		pWnd->MoveWindow(rec);   //伸缩控件
 	}
 
+}
 
+
+BOOL CMFC_OCTDlg::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO:  在此添加消息处理程序代码和/或调用默认值
+	CBrush back(1);
+	CBrush* pold = pDC->SelectObject(&back);
+	CRect rect;
+	pDC->GetClipBox(&rect);
+	pDC->PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATCOPY);
+	pDC->SelectObject(pold);
+
+	return CDialogEx::OnEraseBkgnd(pDC);
+}
+
+
+HBRUSH CMFC_OCTDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  在此更改 DC 的任何特性
+	int nID = pWnd->GetDlgCtrlID(); 
+	HBRUSH m_brush = CreateSolidBrush(RGB(100,100, 85));
+	if (nID == IDR_MENU1) //对指定的控件设属性 
+	{
+		pDC->SetTextColor(RGB(230, 230, 0));
+		pDC->SetBkMode(TRANSPARENT);
+		return m_brush;
+	}
+
+	if (nCtlColor == CTLCOLOR_EDIT || nCtlColor == CTLCOLOR_LISTBOX || nCtlColor ==COLOR_MENU)
+	{
+		pDC->SetBkColor(RGB(255, 0, 0));
+
+		return hbr;
+	}
+
+	else
+	{
+		HBRUSH hBrush = CreateSolidBrush(RGB(230,230,230)); //创建背景刷;
+		pDC->SetBkMode(TRANSPARENT);
+		return hBrush;
+	}
+}
+
+void CMFC_OCTDlg::setScale(CDC* pDC)
+{
+
+	volatile double mZoom = 2.0;
+	volatile double mzoomy = 2.0;
+	CRect rect;
+	m_Picture.GetClientRect(&rect);
+
+	cv::Mat mat = imread("../test/AdvancedSnapshot.png");
+	if (mat.empty())
+		return;
+
+	volatile  int width = static_cast<int>((((rect.Width() - mat.cols*mZoom)) / 2)*3.5 - 50);    // 50 is scale data width 
+	volatile  int height = static_cast<int>((((rect.Height() - mat.rows / mzoomy)) / 2)*3.5);
+
+	if (width < 0)
+	{
+		width = 0;
+	}
+
+	if (height<0)
+	{
+		height = 0;
+	}
+	CPen pen;
+	pen.CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+
+	//volatile int TotalWidth = static_cast<int>((rect.Width()*3.4));
+	//volatile int TotalHeight = static_cast<int>((rect.Height())*3.4);
+
+	volatile int TotalWidth = static_cast<int>((((mat.cols*mZoom)* 3.5) + width + 80)>(rect.Width()*3.5) ? (rect.Width()*3.5) : (((mat.cols*mZoom)* 3.5) + width + 80));    //80 is scale length 
+	volatile int TotalHeight = static_cast<int>((((mat.rows / mzoomy)*3.5) + height + 80) >(rect.Height()*3.5) ? (rect.Height()*3.5) : (((mat.rows / mzoomy)*3.5) + height + 80));
+
+	pDC->SelectObject(&pen);
+	pDC->SetMapMode(MM_LOMETRIC);  // cast light upon x positive value point right, Y positive value point upon 
+
+	pDC->MoveTo(width, -height);
+	pDC->LineTo(width, -TotalHeight);
+
+	CString strScale("0");
+	//pDC->SetTextColor(RGB(0,255,255));
+
+	for (int i = height; i < TotalHeight; i += 20)
+	{
+		if (0 == (i - height) % (480))
+		{
+			pDC->MoveTo(width, -TotalHeight + i - height);
+			pDC->LineTo(width + 50, -TotalHeight + i - height);
+
+			strScale.Format(_T("%d"), ((i - height) / (480)));
+			if (0 != (i - height))   // ordinate zero Point do not show 
+			{
+				pDC->SetTextAlign(TA_CENTER);
+				pDC->TextOutW(width - 30, -TotalHeight + i - height + 30, strScale);
+			}
+		}
+		else if (0 == (i - height) % (20))
+		{
+			pDC->MoveTo(width, -TotalHeight + i - height);
+			pDC->LineTo(width + 40, -TotalHeight + i - height);
+			//pDC->TextOutW(width - 30, -TotalHeight + i - height, strScale);
+		}
+
+	}
+	pDC->MoveTo(width, -TotalHeight);
+	pDC->LineTo(TotalWidth, -TotalHeight);
+	for (int j = width; j < TotalWidth; j += 20)
+	{
+		if (0 == (j - width) % (300))
+		{
+			pDC->MoveTo(j, -TotalHeight);
+			pDC->LineTo(j, -TotalHeight + 50);
+			strScale.Format(_T("%d"), (j / (300)));
+			pDC->SetTextAlign(TA_CENTER);
+			pDC->TextOutW(j, -TotalHeight - 20, strScale);
+		}
+		else if (0 == (j - width) % (20))
+		{
+			pDC->MoveTo(j, -TotalHeight);
+			pDC->LineTo(j, -TotalHeight + 40);
+			//	pDC->TextOutW(j, -TotalHeight-20, strScale);
+		}
+
+	}
 
 }

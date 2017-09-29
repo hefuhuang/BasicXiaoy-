@@ -24,6 +24,7 @@
 #include "vtkMFCWindow.h"
 #include "RegenvtkColor.h"
 #include "SysReadAndWrite.h"
+#include "mystatusBar.h"
 
 #include "vtkClientServerInterpreterInternals.h"
 #include "OpencvShowVedio.h"
@@ -131,7 +132,10 @@ public:
 
 	void ChangeSize(UINT nID, int x, int y);  
 
-	void  SetBkground();
+	void  SetBkground(); 
+
+	void setScale(CDC* pDC);
+
 
 protected:
 	HICON m_hIcon;
@@ -153,7 +157,7 @@ private:
 
 	CWinThread*  DrawThreadHandle;
 
-	CStatusBar m_Statusbar;   // status 
+	mystatusBar m_Statusbar;   // status 
 
 	CStatusBarCtrl bkStatus; 
 
@@ -217,6 +221,8 @@ public:
 
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 };
 
 class Timer {
