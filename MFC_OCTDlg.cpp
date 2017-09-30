@@ -255,8 +255,6 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 
 	GetDlgItem(IDC_STATIC_Vedio)->GetClientRect(&GlobalRect);
 
-
-
 	m_Statusbar.Create(this, WS_CHILD | WS_VISIBLE | CBRS_BOTTOM, AFX_IDW_STATUS_BAR);
 	m_Statusbar.GetStatusBarCtrl().SetMinHeight(20);
 	m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0)); 
@@ -747,12 +745,15 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		double opacityWindow = 240;
 		//灰度值与不透明度  为零则是全透明 为1 则为完全不透明 
 		//opacityTransferFunction->AddSegment(-69, 0, 89, 1);
-		opacityTransferFunction->AddPoint(scalarRange[0], -2.5);
-		opacityTransferFunction->AddPoint(scalarRange[1], 2);
+		opacityTransferFunction->AddPoint(scalarRange[0], 0);
+		opacityTransferFunction->AddPoint(scalarRange[1]/2-10, 0);
+		opacityTransferFunction->AddPoint(scalarRange[1]/4-10, 0);
+		opacityTransferFunction->AddPoint(scalarRange[1], 1);
 		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
 			 
 		color->RemoveAllPoints();
-		color->AddRGBPoint(scalarRange[0], -1, -1, -1);
+		color->AddRGBPoint(scalarRange[0], 0, 0, 0);
+		color->AddRGBPoint(8.9, 0.4, 0.4, 0.4);
 		color->AddRGBPoint(scalarRange[1], 1.0, 1.0, 1.0);
 
 		volumeProperty->SetColor(color.GetPointer());
@@ -2425,7 +2426,6 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_BUTTON_3D, cx, cy);
 		ChangeSize(IDC_STATIC_LIGHT, cx, cy);
 		ChangeSize(IDC_SLIDER_LIFGT, cx, cy);
-		ChangeSize(IDC_SLIDER_Laser, cx, cy);
 		ChangeSize(IDC_SLIDER_LIFGT3, cx, cy);
 		ChangeSize(IDC_3Dmodel, cx, cy);
 		ChangeSize(IDC_COMB3dModel, cx, cy);
@@ -2445,9 +2445,10 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_STATIC_Y, cx, cy);
 		ChangeSize(IDC_STATIC_X, cx, cy);
 		ChangeSize(IDC_STATIC_Time, cx, cy);
+		ChangeSize(IDCSLIDER_Laser, cx, cy);
 
 		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标； 
-		//this->SetBkground();
+	
 	
 	}
 
