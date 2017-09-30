@@ -152,6 +152,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP();
 private:
+	bool Sizeflag ;
 
 	CWinThread*  OCTthreadHandle;
 

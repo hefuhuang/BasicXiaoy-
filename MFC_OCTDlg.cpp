@@ -107,6 +107,7 @@ CMFC_OCTDlg::CMFC_OCTDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CMFC_OCTDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	Sizeflag = false; 
 
 	//volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();  //体绘器属性 
 	//color = vtkSmartPointer<vtkColorTransferFunction>::New();
@@ -279,8 +280,6 @@ BOOL CMFC_OCTDlg::OnInitDialog()
 	//{
 	//	m_menu->DrawMenu();
 	//}
-
-
 
 	/// status bar 
 	//bkStatus.Create(WS_CHILD | WS_VISIBLE | SBT_OWNERDRAW , CRect(0, 0, 0, 0), this, 0);
@@ -2220,7 +2219,8 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	GetDlgItem(IDC_EDITPY)->SetWindowText(str);
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
 	strTime= tm.Format("%y-%m-%d %H:%M:%S");
-
+	if (Sizeflag)
+	{
 	CRect rect;
 	GetClientRect(&rect);
 	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
@@ -2228,8 +2228,15 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	m_Statusbar.SetPaneText(1, strTime);
 	m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
 	m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0));
-	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0);
+	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0); 
 
+	GetDlgItem(IDC_STATIC_Vedio)->GetClientRect(&GlobalRect);
+
+	UpdateData(false); 
+	RedrawWindow();
+	Sizeflag = !Sizeflag;
+
+	}
 	CDialogEx::OnTimer(nIDEvent);
 }
 
@@ -2446,6 +2453,8 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_STATIC_X, cx, cy);
 		ChangeSize(IDC_STATIC_Time, cx, cy);
 		ChangeSize(IDCSLIDER_Laser, cx, cy);
+
+		Sizeflag = true; 
 
 		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标； 
 	
