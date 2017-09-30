@@ -202,6 +202,7 @@ BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
 	ON_WM_SIZE()
 	ON_WM_ERASEBKGND()
 	ON_WM_CTLCOLOR()
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 // CMFC_OCTDlg 消息处理程序
 
@@ -364,10 +365,10 @@ void CMFC_OCTDlg::OnPaint()
 		//m_Picture.GetClientRect(rect);
 		//dc.FillSolidRect(rect, RGB(1, 1, 1));     //设置为黑色背景  
 
-		CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
-		CDC *pDC = this->GetDC();
+		//CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
+		//CDC *pDC = this->GetDC();
 		//this->DrawLine(pDC);
-		this->setScale(pDC);
+		//this->setScale(pDC);
 
 		this->SetBkground(); 
 		
@@ -452,7 +453,7 @@ UINT ShowVedio(LPVOID mDParam)
 
 	while (true)
 	{ 
-		cv::Mat m_dst;
+	cv::Mat m_dst;
 	cv::Mat img = imread("..//test//tiled.tif", 1);  //1:为原图颜色,0:为灰度图
 	cv::line(img,BeginPoint,EndPoint,Scalar(255,0,0),2);   // 设置线粗与颜色
 	waitKey(10);
@@ -2611,4 +2612,30 @@ void CMFC_OCTDlg::setScale(CDC* pDC)
 
 	}
 
+}
+
+int CMFC_OCTDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CDialogEx::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	CString strMyClass = AfxRegisterWndClass(CS_VREDRAW | CS_HREDRAW,
+		::LoadCursor(NULL, IDC_ARROW), (HBRUSH) ::GetStockObject(WHITE_BRUSH),
+		::LoadIcon(NULL, IDI_APPLICATION)); 
+
+
+	m_pMyWnd = new CFrameWnd;
+	m_pMyWnd->Create(strMyClass, _T(""), WS_CHILD, CRect(0, 0, 300, 300), this);
+	m_pMyWnd->ShowWindow(SW_SHOW);
+
+	if (m_SplitterWndButton.CreateStatic(m_pMyWnd, 1, 2) == NULL) //1行2列  
+	{
+		return -1; 
+	}  
+
+	m_SplitterWndButton.CreateView(0, 0, RUNTIME_CLASS(CBFunction),
+		CSize(100, 100), NULL);
+ 
+
+	return 0;
 }

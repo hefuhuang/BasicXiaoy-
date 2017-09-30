@@ -43,6 +43,9 @@
     <Filter Include="status">
       <UniqueIdentifier>{1e28ac77-e8d9-4019-a55a-90ff798b366b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{56738239-7da8-40d2-8e80-c601cbc30669}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -141,6 +144,12 @@
     <ClInclude Include="mystatusBar.h">
       <Filter>status</Filter>
     </ClInclude>
+    <ClInclude Include="BFunction.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionView.h">
+      <Filter>Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_OCT.cpp">
@@ -199,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="mystatusBar.cpp">
       <Filter>status</Filter>
+    </ClCompile>
+    <ClCompile Include="BFunction.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionView.cpp">
+      <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

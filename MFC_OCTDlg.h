@@ -25,6 +25,8 @@
 #include "RegenvtkColor.h"
 #include "SysReadAndWrite.h"
 #include "mystatusBar.h"
+#include "FunctionView.h"
+#include "BFunction.h"
 
 #include "vtkClientServerInterpreterInternals.h"
 #include "OpencvShowVedio.h"
@@ -138,6 +140,11 @@ public:
 
 
 protected:
+
+	CFrameWnd *m_pMyWnd;
+	CSplitterWnd m_SplitterWndButton;
+	CSplitterWnd m_SplitterWndVedio;
+	
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
@@ -224,6 +231,7 @@ public:
 
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 
 class Timer {
