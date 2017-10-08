@@ -144,18 +144,20 @@ CMFC_OCTDlg::~CMFC_OCTDlg()
 	//ren->FastDelete();
 	//renWin->RemoveRenderer(ren);
 
-//vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
-//iren->AddObserver(vtkCommand::AnyEvent,client);
-//this->renWin->Finalize();
-//this->iren->GetRenderWindow()->Render();
-//Close the window
-//this->iren->GetRenderWindow()->Finalize();
-// Stop the interactor
-//this->iren->TerminateApp();
+	
+
+	//vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
+	//iren->AddObserver(vtkCommand::AnyEvent,client);
+	//this->renWin->Finalize();
+	//this->iren->GetRenderWindow()->Render();
+	//Close the window
+	//this->iren->GetRenderWindow()->Finalize();
+	// Stop the interactor
+	//this->iren->TerminateApp();
 
 	//if (nullptr != renWin)
 	//{ 
- //    renWin->Delete();
+	//    renWin->Delete();
 	//}
 	// //iren->RemoveAllObservers();
 	//if (nullptr !=iren)
@@ -203,6 +205,7 @@ BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
 	ON_WM_ERASEBKGND()
 	ON_WM_CTLCOLOR()
 	ON_WM_CREATE()
+	ON_NOTIFY(NM_CUSTOMDRAW, IDCSLIDER_Laser, &CMFC_OCTDlg::OnNMCustomdrawLaser)
 END_MESSAGE_MAP()
 // CMFC_OCTDlg 消息处理程序
 
@@ -370,7 +373,7 @@ void CMFC_OCTDlg::OnPaint()
 		//this->DrawLine(pDC);
 		//this->setScale(pDC);
 
-		this->SetBkground(); 
+		//this->SetBkground(); 
 		
 		////////////////////
 		CDialogEx::OnPaint();
@@ -568,7 +571,7 @@ void on_mouse(int event, int x, int y, int flags, void* ustc)   //opencv鼠标�
 void CMFC_OCTDlg::OnBnClickedButton3d()
 { 
 
-	//TestVtk();
+	TestVtk();
 
 	switch (Model3dStyle)
 	{
@@ -582,7 +585,7 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 		Model3Dstyledefault();
 		break;
 	}
-
+	
 }
 
 void  TestVtk()
@@ -2220,8 +2223,10 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	GetDlgItem(IDC_EDITPY)->SetWindowText(str);
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
 	strTime= tm.Format("%y-%m-%d %H:%M:%S");
+
 	if (Sizeflag)
 	{
+
 	CRect rect;
 	GetClientRect(&rect);
 	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
@@ -2454,7 +2459,7 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_STATIC_X, cx, cy);
 		ChangeSize(IDC_STATIC_Time, cx, cy);
 		ChangeSize(IDCSLIDER_Laser, cx, cy);
-
+		
 		Sizeflag = true; 
 
 		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标； 
@@ -2623,9 +2628,9 @@ int CMFC_OCTDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		::LoadCursor(NULL, IDC_ARROW), (HBRUSH) ::GetStockObject(WHITE_BRUSH),
 		::LoadIcon(NULL, IDI_APPLICATION)); 
 
-
+	GetClientRect(&GlobalRect); 
 	m_pMyWnd = new CFrameWnd;
-	m_pMyWnd->Create(strMyClass, _T(""), WS_CHILD, CRect(0, 0, 300, 300), this);
+	m_pMyWnd->Create(strMyClass, _T(""), WS_CHILD, GlobalRect, this);
 	m_pMyWnd->ShowWindow(SW_SHOW);
 
 	if (m_SplitterWndButton.CreateStatic(m_pMyWnd, 1, 2) == NULL) //1行2列  
@@ -2636,6 +2641,14 @@ int CMFC_OCTDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_SplitterWndButton.CreateView(0, 0, RUNTIME_CLASS(CBFunction),
 		CSize(100, 100), NULL);
  
-
+	
 	return 0;
+}
+
+
+void CMFC_OCTDlg::OnNMCustomdrawLaser(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
+	// TODO:  在此添加控件通知处理程序代码
+	*pResult = 0;
 }

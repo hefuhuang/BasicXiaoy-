@@ -232,6 +232,7 @@ public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnNMCustomdrawLaser(NMHDR *pNMHDR, LRESULT *pResult);
 };
 
 class Timer {

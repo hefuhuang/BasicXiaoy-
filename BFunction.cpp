@@ -26,6 +26,7 @@ void CBFunction::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CBFunction, CFormView)
+	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -47,3 +48,24 @@ void CBFunction::Dump(CDumpContext& dc) const
 
 
 // CBFunction 消息处理程序
+
+
+BOOL CBFunction::Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext)
+{
+	// TODO:  在此添加专用代码和/或调用基类
+
+	return CFormView::Create(lpszClassName, lpszWindowName, dwStyle, rect, pParentWnd, nID, pContext);
+}
+
+
+void CBFunction::OnPaint()
+{
+	
+	CRect rect;
+	CPaintDC dc(this);
+	GetClientRect(rect);
+	dc.FillSolidRect(rect, RGB(1, 1, 1));     //设置为黑色背景  
+
+	// TODO:  在此处添加消息处理程序代码
+	// 不为绘图消息调用 CFormView::OnPaint()
+}
