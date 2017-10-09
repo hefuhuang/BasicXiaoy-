@@ -170,13 +170,11 @@
     <ClInclude Include="..\menu\MenuItemWnd.h" />
     <ClInclude Include="AddSheet.h" />
     <ClInclude Include="BCGHeader.h" />
-    <ClInclude Include="BFunction.h" />
     <ClInclude Include="C2dParamSeting.h" />
     <ClInclude Include="C3DParaSeting.h" />
     <ClInclude Include="CvImgCtrl.h" />
     <ClInclude Include="Dlg3DParam.h" />
     <ClInclude Include="DlgParam.h" />
-    <ClInclude Include="FunctionView.h" />
     <ClInclude Include="MFCVtkWindow.h" />
     <ClInclude Include="MFC_OCT.h" />
     <ClInclude Include="MFC_OCTDlg.h" />
@@ -198,12 +196,10 @@
     <ClCompile Include="..\menu\FreeMenu.cpp" />
     <ClCompile Include="..\menu\MenuItemWnd.cpp" />
     <ClCompile Include="AddSheet.cpp" />
-    <ClCompile Include="BFunction.cpp" />
     <ClCompile Include="C2dParamSeting.cpp" />
     <ClCompile Include="C3DParaSeting.cpp" />
     <ClCompile Include="Dlg3DParam.cpp" />
     <ClCompile Include="DlgParam.cpp" />
-    <ClCompile Include="FunctionView.cpp" />
     <ClCompile Include="MFCVtkWindow.cpp" />
     <ClCompile Include="MFC_OCT.cpp" />
     <ClCompile Include="MFC_OCTDlg.cpp" />

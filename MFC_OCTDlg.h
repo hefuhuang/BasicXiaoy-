@@ -25,8 +25,6 @@
 #include "RegenvtkColor.h"
 #include "SysReadAndWrite.h"
 #include "mystatusBar.h"
-#include "FunctionView.h"
-#include "BFunction.h"
 
 #include "vtkClientServerInterpreterInternals.h"
 #include "OpencvShowVedio.h"
@@ -71,8 +69,6 @@ void calDistanceOfTwoPoint(cv::Point PointBegin, cv::Point PointEnd, double& len
 
 UINT ShowVedio(LPVOID mDParam);   // 播放OCT摄像头图片 
 
-void TestVtk();
-
 
 #ifndef AFX_TESTDIDLG_H__6EA700CE_0AF3_11D2_9768_0080C858DB41__INCLUDED_
 #define AFX_TESTDIDLG_H__6EA700CE_0AF3_11D2_9768_0080C858DB41__INCLUDED_
@@ -116,6 +112,8 @@ public:
 
 	void showMat();
 
+	void TestVtk();
+
 	void showBmpImage(int ID);
 	 
 	void Close3Dwindow();
@@ -140,11 +138,6 @@ public:
 
 
 protected:
-
-	CFrameWnd *m_pMyWnd;
-	CSplitterWnd m_SplitterWndButton;
-	CSplitterWnd m_SplitterWndVedio;
-	
 	HICON m_hIcon;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
@@ -231,8 +224,6 @@ public:
 
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnNMCustomdrawLaser(NMHDR *pNMHDR, LRESULT *pResult);
 };
 
 class Timer {

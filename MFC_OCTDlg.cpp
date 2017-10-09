@@ -144,20 +144,18 @@ CMFC_OCTDlg::~CMFC_OCTDlg()
 	//ren->FastDelete();
 	//renWin->RemoveRenderer(ren);
 
-	
-
-	//vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
-	//iren->AddObserver(vtkCommand::AnyEvent,client);
-	//this->renWin->Finalize();
-	//this->iren->GetRenderWindow()->Render();
-	//Close the window
-	//this->iren->GetRenderWindow()->Finalize();
-	// Stop the interactor
-	//this->iren->TerminateApp();
+//vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
+//iren->AddObserver(vtkCommand::AnyEvent,client);
+//this->renWin->Finalize();
+//this->iren->GetRenderWindow()->Render();
+//Close the window
+//this->iren->GetRenderWindow()->Finalize();
+// Stop the interactor
+//this->iren->TerminateApp();
 
 	//if (nullptr != renWin)
 	//{ 
-	//    renWin->Delete();
+ //    renWin->Delete();
 	//}
 	// //iren->RemoveAllObservers();
 	//if (nullptr !=iren)
@@ -204,8 +202,6 @@ BEGIN_MESSAGE_MAP(CMFC_OCTDlg, CDialogEx)
 	ON_WM_SIZE()
 	ON_WM_ERASEBKGND()
 	ON_WM_CTLCOLOR()
-	ON_WM_CREATE()
-	ON_NOTIFY(NM_CUSTOMDRAW, IDCSLIDER_Laser, &CMFC_OCTDlg::OnNMCustomdrawLaser)
 END_MESSAGE_MAP()
 // CMFC_OCTDlg 消息处理程序
 
@@ -368,12 +364,12 @@ void CMFC_OCTDlg::OnPaint()
 		//m_Picture.GetClientRect(rect);
 		//dc.FillSolidRect(rect, RGB(1, 1, 1));     //设置为黑色背景  
 
-		//CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
-		//CDC *pDC = this->GetDC();
+		CWnd *pwnd = GetDlgItem(IDC_Xiaoy_STATIC);
+		CDC *pDC = this->GetDC();
 		//this->DrawLine(pDC);
-		//this->setScale(pDC);
+		this->setScale(pDC);
 
-		//this->SetBkground(); 
+		this->SetBkground(); 
 		
 		////////////////////
 		CDialogEx::OnPaint();
@@ -456,7 +452,7 @@ UINT ShowVedio(LPVOID mDParam)
 
 	while (true)
 	{ 
-	cv::Mat m_dst;
+		cv::Mat m_dst;
 	cv::Mat img = imread("..//test//tiled.tif", 1);  //1:为原图颜色,0:为灰度图
 	cv::line(img,BeginPoint,EndPoint,Scalar(255,0,0),2);   // 设置线粗与颜色
 	waitKey(10);
@@ -564,14 +560,13 @@ void on_mouse(int event, int x, int y, int flags, void* ustc)   //opencv鼠标�
 		break;
 	}
 	
-
 }
 
 
 void CMFC_OCTDlg::OnBnClickedButton3d()
 { 
 
-	TestVtk();
+	//TestVtk();
 
 	switch (Model3dStyle)
 	{
@@ -585,10 +580,10 @@ void CMFC_OCTDlg::OnBnClickedButton3d()
 		Model3Dstyledefault();
 		break;
 	}
-	
+
 }
 
-void  TestVtk()
+void  CMFC_OCTDlg::TestVtk()
 {
 	std::vector<vtkSmartPointer<vtkPolyDataAlgorithm> > geometricObjectSources;
 
@@ -633,6 +628,7 @@ void  TestVtk()
 
 	vtkSmartPointer<vtkRenderWindow> renderWindow =
 		vtkSmartPointer<vtkRenderWindow>::New();
+	renderWindow->SetParentId(m_hWnd);
 	renderWindow->SetSize(rendererSize*gridCols, rendererSize*gridRows);
 
 	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
@@ -671,8 +667,6 @@ void  TestVtk()
 }
 
 
-
-
 void CMFC_OCTDlg::Model3Dstyledefault()
 {
 	
@@ -681,13 +675,29 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	vtkObject::GlobalWarningDisplayOff();
 	vtkSmartPointer<vtkStructuredPointsReader> StruVtkreader = vtkSmartPointer<vtkStructuredPointsReader>::New();
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
-	vtkSmartPointer<vtkRenderer> ren = vtkSmartPointer<vtkRenderer>::New();
-	vtkSmartPointer<vtkWin32OpenGLRenderWindow> renWin = vtkSmartPointer<vtkWin32OpenGLRenderWindow>::New();
-	vtkSmartPointer<vtkWin32RenderWindowInteractor> iren = vtkSmartPointer<vtkWin32RenderWindowInteractor>::New();
-	vtkSmartPointer<vtkVolumeProperty> volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();  //体绘器属性 
+	
+	std::vector<vtkSmartPointer<vtkPolyDataAlgorithm> > geometricObjectSources;
+	geometricObjectSources.push_back(vtkSmartPointer<vtkArrowSource>::New());//箭头
+
+	std::vector<vtkSmartPointer<vtkRenderer>> ren;
+
+	vtkSmartPointer<vtkRenderWindow> renWin = vtkSmartPointer<vtkRenderWindow>::New();
+	vtkSmartPointer<vtkRenderWindowInteractor> iren = vtkSmartPointer<vtkRenderWindowInteractor>::New();
+
+	std::vector<vtkSmartPointer<vtkVolumeProperty>> volumeProperty;
+	volumeProperty.push_back(vtkSmartPointer<vtkVolumeProperty>::New());  //体绘器属性 
+
 	vtkSmartPointer<vtkVolumeRayCastIsosurfaceFunction> surfaceFunction = vtkSmartPointer<vtkVolumeRayCastIsosurfaceFunction>::New();  //等值面绘制函数
 	vtkSmartPointer<vtkVolumeRayCastCompositeFunction> compositeFunction = vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New();  // 合成体绘制函数
-	vtkSmartPointer<vtkVolume> volume = vtkSmartPointer<vtkVolume>::New(); //表示透示图中的一组三维数据
+
+	std::vector<vtkSmartPointer<vtkVolume>> volume;
+	volume.push_back(vtkSmartPointer<vtkVolume>::New());
+
+	std::vector<vtkSmartPointer<vtkActor> > actors;
+	actors.push_back(vtkSmartPointer<vtkActor>::New());
+	std::vector<vtkSmartPointer<vtkPolyDataMapper> > actormappers;
+	actormappers.push_back(vtkSmartPointer<vtkPolyDataMapper>::New());
+
 	vtkSmartPointer<vtkAxesActor> axes = vtkSmartPointer<vtkAxesActor>::New();
 	vtkSmartPointer<vtkOrientationMarkerWidget> widget = vtkSmartPointer<vtkOrientationMarkerWidget>::New();
 	vtkSmartPointer<vtkContourFilter> Extract = vtkSmartPointer<vtkContourFilter>::New();
@@ -697,10 +707,18 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 	vtkSmartPointer<vtkExtractVOI> ExtractVOI = vtkSmartPointer<vtkExtractVOI>::New();
 	vtkSmartPointer<vtkMarchingCubes> MarchCube = vtkSmartPointer<vtkMarchingCubes>::New();
 	vtkSmartPointer<vtkDataSetMapper> mapperdata = vtkSmartPointer<vtkDataSetMapper>::New();
-	vtkSmartPointer<vtkColorTransferFunction> color = vtkSmartPointer<vtkColorTransferFunction>::New();
+
+	std::vector<vtkSmartPointer<vtkColorTransferFunction>> color;
+	color.push_back(vtkSmartPointer<vtkColorTransferFunction>::New());
+
 	vtkSmartPointer<vtkPiecewiseFunction> gradient = vtkSmartPointer<vtkPiecewiseFunction>::New();
 
-	vtkSmartPointer<vtkGPUVolumeRayCastMapper> VolMapper = vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New(); 
+	std::vector<vtkSmartPointer<vtkGPUVolumeRayCastMapper>> VolMapper;
+	VolMapper.push_back(vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New());
+
+	std::vector<vtkSmartPointer<vtkPolyData>> ployMapper;
+	ployMapper.push_back(vtkSmartPointer<vtkPolyData>::New());
+
 	vtkSmartPointer<vtkClientServerInterpreterInternals>client = vtkSmartPointer<vtkClientServerInterpreterInternals>::New();
 	vtkSmartPointer<vtkPolyDataConnectivityFilter> confilter =vtkSmartPointer<vtkPolyDataConnectivityFilter>::New();
 
@@ -732,17 +750,21 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		}
 		distance = distance / 2.0;
 
-		VolMapper->SetSampleDistance(static_cast<float>(distance));
-		VolMapper->SetBlendModeToComposite();
-		VolMapper->SetInputConnection(StruVtkreader->GetOutputPort());
-		VolMapper->GetInput()->GetScalarRange(scalarRange);
+		VolMapper[0]->SetSampleDistance(static_cast<float>(distance));
+		VolMapper[0]->SetBlendModeToComposite();
+		VolMapper[0]->SetInputConnection(StruVtkreader->GetOutputPort());
+		VolMapper[0]->GetInput()->GetScalarRange(scalarRange);
 
-		volumeProperty->ShadeOff();
-		volumeProperty->SetAmbient(0.3);   // 周围的光照环境 
-		volumeProperty->SetDiffuse(0.7);   //扩散光系数
-		volumeProperty->SetSpecular(0.0);  //反射光系数
-		volumeProperty->SetSpecularPower(50.0);  //反射度
-		volumeProperty->SetInterpolationTypeToLinear();
+		VolMapper.push_back(vtkSmartPointer<vtkGPUVolumeRayCastMapper>::New());
+		VolMapper[1]->SetSampleDistance(static_cast<float>(distance));
+		VolMapper[1]->SetBlendModeToComposite();
+		VolMapper[1]->SetInputConnection(StruVtkreader->GetOutputPort());
+		
+		volumeProperty[0]->SetAmbient(0.3);   // 周围的光照环境 
+		volumeProperty[0]->SetDiffuse(0.7);   //扩散光系数
+		volumeProperty[0]->SetSpecular(0.0);  //反射光系数
+		volumeProperty[0]->SetSpecularPower(50.0);  //反射度
+		volumeProperty[0]->SetInterpolationTypeToLinear();
 		//不透明度映射函数
 		double opacityLevel = 120;
 		double opacityWindow = 240;
@@ -752,55 +774,95 @@ void CMFC_OCTDlg::Model3Dstyledefault()
 		opacityTransferFunction->AddPoint(scalarRange[1]/2-10, 0);
 		opacityTransferFunction->AddPoint(scalarRange[1]/4-10, 0);
 		opacityTransferFunction->AddPoint(scalarRange[1], 1);
-		volumeProperty->SetScalarOpacity(opacityTransferFunction.GetPointer());
+		volumeProperty[0]->SetScalarOpacity(opacityTransferFunction.GetPointer());
 			 
-		color->RemoveAllPoints();
-		color->AddRGBPoint(scalarRange[0], 0, 0, 0);
-		color->AddRGBPoint(8.9, 0.4, 0.4, 0.4);
-		color->AddRGBPoint(scalarRange[1], 1.0, 1.0, 1.0);
+		color[0]->RemoveAllPoints();
+		color[0]->AddRGBPoint(scalarRange[0], 0, 0, 0);
+		color[0]->AddRGBPoint(8.9, 0.4, 0.4, 0.4);
+		color[0]->AddRGBPoint(scalarRange[1], 1.0, 1.0, 1.0);
 
-		volumeProperty->SetColor(color.GetPointer());
+		volumeProperty[0]->SetColor(color[0].GetPointer());
 		//volumeProperty->SetTransferMode(vtkVolumeProperty::TF_1D);
 		//volumeProperty->SetTransferMode(vtkVolumeProperty::TF_2D);
 
-		volume->SetMapper(VolMapper.GetPointer());
-		volume->SetProperty(volumeProperty.GetPointer());
+		volume[0]->SetMapper(VolMapper[0].GetPointer());
+
+		volume.push_back(vtkSmartPointer<vtkVolume>::New());
+		volume[1]->SetMapper(VolMapper[1].GetPointer());
+		volume[1]->SetProperty(volumeProperty[0].GetPointer());
 
 		renWin->SetParentId(m_hWnd);
 		//ren->AddActor(actor);                 ///把渲染的数据添加到渲染的工具里
-		ren->AddVolume(volume.GetPointer());
-		volume->FastDelete();
-		ren->SetActiveCamera(camera.GetPointer());
-		ren->SetBackground(1, 1, 1);
-		ren->ResetCamera();
-
-	    renWin->AddRenderer(ren);
-		iren->SetInteractorStyle(style.GetPointer());
-		iren->SetRenderWindow(renWin);
 		CRect rect;
 		GetClientRect(&rect);
 		CRect prect;
 		m_Picture.GetClientRect(&prect);
 		renWin->SetSize((prect.right - prect.left), (prect.bottom - prect.top));//设置背景颜色和绘制窗口大小
-		renWin->Render();  ////窗口进行绘制
-		renWin->MakeCurrent();
-		axes->SetXAxisLabelText("X");
-		axes->SetYAxisLabelText("Y");
-		axes->SetZAxisLabelText("Z");
-		widget->SetOutlineColor(0.9300, 0.5700, 0.1300);
-		widget->SetOrientationMarker(axes.GetPointer());
-		widget->SetInteractor(iren.GetPointer());
-		widget->SetViewport(0.0, 0.0, 0.2, 0.2);
-		widget->SetEnabled(true);
+
+		int gridCols = 2;  // 列 
+		int gridRows = 1;  // 行
+
+		double viewport[4] = {
+		     0,
+			 0,
+			 1/2,
+			 1 };
+
+		//vtkSmartPointer<vtkRenderer> ren1 = vtkSmartPointer<vtkRenderer>::New();
+		//ren1->GetViewport(viewport);
+		//ren1->SetBackground(.1, .2, .3);
+		//ren1->AddVolume(volume[0]);
+
+		ren.push_back(vtkSmartPointer<vtkRenderer>::New());
+		ren[0]->SetViewport(viewport);
+		ren[0]->SetBackground(.1, .2, .3);
+		ren[0]->AddVolume(volume[0].GetPointer());
+		ren[0]->SetActiveCamera(camera.GetPointer());
+		ren[0]->ResetCamera();
+		renWin->AddRenderer(ren[0]);
+
+		double viewportt[4] = { 
+			1/2,
+			0,
+		    1,
+		    1 };
+
+		//vtkSmartPointer<vtkRenderer> ren2 = vtkSmartPointer<vtkRenderer>::New();
+		//ren2->GetViewport(viewport);
+		//ren2->SetBackground(.1, .2, .3);
+		//ren2->AddVolume(volume[2]);
+
+		ren.push_back(vtkSmartPointer<vtkRenderer>::New());
+		ren[1]->SetViewport(viewportt);
+		ren[1]->AddVolume(volume[1].GetPointer());
+		ren[1]->SetActiveCamera(camera.GetPointer());
+		ren[1]->SetBackground(.1, .2, .3);
+		ren[1]->ResetCamera();
+		renWin->AddRenderer(ren[1]);
+
+		iren->SetInteractorStyle(style.GetPointer());
+		iren->SetRenderWindow(renWin);
+		renWin->Render();   //窗口进行绘制
+
+		//renWin->MakeCurrent();
+		//axes->SetXAxisLabelText("X");
+		//axes->SetYAxisLabelText("Y");
+		//axes->SetZAxisLabelText("Z");
+		//widget->SetOutlineColor(0.9300, 0.5700, 0.1300);
+		//widget->SetOrientationMarker(axes.GetPointer());
+		//widget->SetInteractor(iren.GetPointer());
+		//widget->SetViewport(0.0, 0.0, 0.2, 0.2);
+		//widget->SetEnabled(true);
 		//widget->InteractiveOff();
+
 		iren->Initialize();
 		iren->AddObserver(vtkCommand::LeftButtonPressEvent,client);
 		iren->Start();   //初始化并进行交互绘制
-		ren->ResetCameraClippingRange();
-		recorder->SetInteractor(iren.GetPointer());   //生成渲染日志 
-		recorder->SetFileName("vtkInteractorEventRecorder.log");
-		recorder->On();
-		recorder->Record();
+		//ren->ResetCameraClippingRange();
+		//recorder->SetInteractor(iren.GetPointer());   //生成渲染日志 
+		//recorder->SetFileName("vtkInteractorEventRecorder.log");
+		//recorder->On();
+		//recorder->Record();
 		return ;
 	    
 	}
@@ -2223,15 +2285,15 @@ void CMFC_OCTDlg::OnTimer(UINT_PTR nIDEvent)
 	GetDlgItem(IDC_EDITPY)->SetWindowText(str);
 	GetDlgItem(IDC_EDITPZ)->SetWindowText(str);
 	strTime= tm.Format("%y-%m-%d %H:%M:%S");
+	m_Statusbar.SetPaneText(1, strTime);
 
 	if (Sizeflag)
 	{
-
 	CRect rect;
 	GetClientRect(&rect);
 	m_Statusbar.SetPaneInfo(0, ID_INDICATOR_NISH, SBPS_NORMAL, rect.Width() / 2);
 	m_Statusbar.SetPaneInfo(1, ID_INDICATOR_TIME, SBPS_STRETCH, rect.Width() / 2);
-	m_Statusbar.SetPaneText(1, strTime);
+	
 	m_Statusbar.SetPaneText(0, _T("一直被模仿，从未被超越！"));
 	m_Statusbar.GetStatusBarCtrl().SetBkColor(RGB(255, 0, 0));
 	RepositionBars(AFX_IDW_CONTROLBAR_FIRST, AFX_IDW_CONTROLBAR_LAST, 0); 
@@ -2459,7 +2521,7 @@ void CMFC_OCTDlg::OnSize(UINT nType, int cx, int cy)
 		ChangeSize(IDC_STATIC_X, cx, cy);
 		ChangeSize(IDC_STATIC_Time, cx, cy);
 		ChangeSize(IDCSLIDER_Laser, cx, cy);
-		
+
 		Sizeflag = true; 
 
 		GetClientRect(&m_TotalRect);   //最后要更新对话框的大小，当做下一次变化的旧坐标； 
@@ -2617,38 +2679,4 @@ void CMFC_OCTDlg::setScale(CDC* pDC)
 
 	}
 
-}
-
-int CMFC_OCTDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
-{
-	if (CDialogEx::OnCreate(lpCreateStruct) == -1)
-		return -1;
-
-	CString strMyClass = AfxRegisterWndClass(CS_VREDRAW | CS_HREDRAW,
-		::LoadCursor(NULL, IDC_ARROW), (HBRUSH) ::GetStockObject(WHITE_BRUSH),
-		::LoadIcon(NULL, IDI_APPLICATION)); 
-
-	GetClientRect(&GlobalRect); 
-	m_pMyWnd = new CFrameWnd;
-	m_pMyWnd->Create(strMyClass, _T(""), WS_CHILD, GlobalRect, this);
-	m_pMyWnd->ShowWindow(SW_SHOW);
-
-	if (m_SplitterWndButton.CreateStatic(m_pMyWnd, 1, 2) == NULL) //1行2列  
-	{
-		return -1; 
-	}  
-
-	m_SplitterWndButton.CreateView(0, 0, RUNTIME_CLASS(CBFunction),
-		CSize(100, 100), NULL);
- 
-	
-	return 0;
-}
-
-
-void CMFC_OCTDlg::OnNMCustomdrawLaser(NMHDR *pNMHDR, LRESULT *pResult)
-{
-	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
-	// TODO:  在此添加控件通知处理程序代码
-	*pResult = 0;
 }
